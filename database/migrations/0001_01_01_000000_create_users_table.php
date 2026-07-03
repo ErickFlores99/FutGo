@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->tinyInteger('estatus')->default(1)->comment('0=inactivo, 1=activo, 2=bloqueado, 3=eliminado, 4=pending, 5=archivado, 6=expirado, 7=deshabilitado, 8=pendiente de verificación, 9=verificado, 10=desactivado');
             $table->rememberToken();
             $table->timestamps();
         });
@@ -35,6 +36,19 @@ return new class extends Migration
             $table->longText('payload');
             $table->integer('last_activity')->index();
         });
+
+        Schema::create('roles', function (Blueprint $table) {
+            $table->id();
+            $table->string('nombre');
+            $table->timestamps();
+        });
+        
+        Schema::create('rol_user', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('rol_id')->constrained('roles')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -42,8 +56,11 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
-        Schema::dropIfExists('password_reset_tokens');
+        // El orden importa: Primero eliminamos las tablas pivote con llaves foráneas
+        Schema::dropIfExists('rol_user');
+        Schema::dropIfExists('roles');
         Schema::dropIfExists('sessions');
+        Schema::dropIfExists('password_reset_tokens');
+        Schema::dropIfExists('users');
     }
 };
