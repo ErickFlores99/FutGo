@@ -66,24 +66,25 @@ public/
     ├── admin/
     └── site/
 
+---
 
 ## ⚙️ Instalación y Configuración
-Sigue estos pasos para levantar el entorno de desarrollo local:
+* **Sigue estos pasos para levantar el entorno de desarrollo local:
 
-Clonar el repositorio:
+* **Clonar el repositorio:
     git clone [https://github.com/tu-usuario/futgo.git]
     cd futgo
 
-Instalar dependencias de PHP:
+* **Instalar dependencias de PHP:
     composer install
 
-Configurar el entorno:
+* **Configurar el entorno:
     Copia el archivo de ejemplo y configura tus credenciales de base de datos.
 
     cp .env.example .env
 
-Generar la clave de la aplicación:
+* **Generar la clave de la aplicación:
     php artisan key:generate
 
-Ejecutar migraciones y seeders:
+* **Ejecutar migraciones y seeders:
     php artisan migrate --seed
