@@ -66,6 +66,8 @@ public/
     ├── admin/
     └── site/
 
+```
+
 ---
 
 ## ⚙️ Instalación y Configuración
