@@ -11,27 +11,25 @@
     <!-- CSS -->
     @yield('css')
 </head>
-<body>
+<body class="bg-light">
     <!-- Contenedor Principal -->
     <div class="d-flex flex-column flex-lg-row" style="min-height: 100vh;">
 
-        <!-- SIDEBAR -->
+        <!-- Sidebar -->
         @include('admin.template.components.sidebar')
-        <!-- Fin SIDEBAR -->
+        <!-- Fin Sidebar -->
 
         <!-- CONTENEDOR DERECHO (Header + Contenido) -->
-        <div class="d-flex flex-column flex-grow-1 bg-light min-vw-0">
+        <div class="d-flex flex-column flex-grow-1 min-vw-0">
     
             <!-- Header -->
-            <div class="ms-lg-3 bg-white rounded-bottom-lg-3 shadow-sm">
-                @include('admin.template.components.header')
-            </div>
+            @include('admin.template.components.header')
+            <!-- Fin Header -->
 
             <!-- Contenido principal -->
-            <main class="p-4 ms-lg-3 mt-4 bg-white rounded-3 shadow-sm">
+            <main>
                 @yield('content')
             </main>
-
         </div>
     </div>
 

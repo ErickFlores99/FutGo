@@ -1,4 +1,4 @@
-<div class="offcanvas-lg offcanvas-start flex-shrink-0 p-3 rounded-bottom-lg-3 shadow-sm" 
+<div class="offcanvas-lg offcanvas-start flex-shrink-0 p-3 mt-lg-3 ms-lg-3 mb-lg-3 rounded-4 shadow-sm bg-white"
     tabindex="-1" 
     id="sidebarMenu" 
     aria-labelledby="sidebarMenuLabel" 
