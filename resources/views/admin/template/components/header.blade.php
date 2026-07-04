@@ -27,7 +27,9 @@
                 data-bs-toggle="dropdown" 
                 aria-expanded="false" 
                 style="width: 45px; height: 45px; padding: 0;">
-                    <span class="fw-bold fs-4">U</span>
+                    <span class="fw-bold fs-4">
+                        {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
+                    </span>
                 </a>
                 
                 <!-- Menú Desplegable -->
@@ -38,13 +40,17 @@
                             <!-- Inicial 'U' en la parte izquierda -->
                             <div class="d-flex align-items-center justify-content-center bg-success text-white rounded-circle fw-bold fs-5 me-3" 
                                 style="width: 40px; height: 40px; flex-shrink: 0;">
-                                U
+                                {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
                             </div>
                             <!-- Nombre, Rol y Correo al lado derecho de la 'U' -->
                             <div class="d-flex flex-column text-start">
-                                <span class="text-dark fw-bold lh-sm">Usuario Completo</span>
-                                <span class="text-muted small lh-sm">Administrador</span>
-                                <span class="text-muted small lh-sm" style="font-size: 0.75rem;">email@example.com</span>
+                                <span class="text-dark fw-bold lh-sm">{{ auth()->user()->name }}</span>
+                                
+                                @foreach(auth()->user()->roles as $rol)
+                                    <span class="text-muted small lh-sm">{{ $rol->nombre }}</span>
+                                @endforeach
+                                
+                                <span class="text-muted small lh-sm">{{ auth()->user()->email }}</span>
                             </div>
                         </div>
                     </li>
@@ -64,8 +70,26 @@
                     
                     <li><hr class="dropdown-divider"></li>
                     
+                    <!-- Opcion para regresar al sitio principal, alineada a la izquierda -->
+                    <li><a class="dropdown-item" href="{{ route('site.index') }}">Regresar al sitio</a></li>
+                    
                     <!-- Opción de salir alineada a la izquierda -->
-                    <li><a class="dropdown-item text-danger" href="{{ route('site.index') }}">Salir</a></li>
+                    <li>
+                        <!-- El enlace detiene su comportamiento normal y activa el formulario oculto -->
+                        <a 
+                            class="dropdown-item text-danger" 
+                            href="{{ route('logout') }}" 
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                        >
+                            Salir
+                        </a>
+
+                        <!-- FORMULARIO OCULTO: Es el que realmente hace el trabajo de cerrar sesión -->
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            <!-- Token de seguridad obligatorio para peticiones POST -->
+                            @csrf
+                        </form>
+                    </li>
                 </ul>
             </div>
         </div>

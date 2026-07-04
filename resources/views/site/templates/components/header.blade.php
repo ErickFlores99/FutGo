@@ -22,7 +22,16 @@
                 <button type="button" class="btn btn-sm btn-link text-dark text-decoration-none py-1 px-3 text-start text-lg-center">Home</button>
                 <button type="button" class="btn btn-sm btn-link text-dark text-decoration-none py-1 px-3 text-start text-lg-center">Contacto</button>
                 <button type="button" class="btn btn-sm btn-link text-dark text-decoration-none py-1 px-3 text-start text-lg-center">Acerca de</button>
-                <a href="{{ route('login') }}" class="btn btn-sm btn-outline-success w-100 w-lg-auto ms-lg-2">Login</a>
+                
+                @auth
+                    <!-- Si el usuario YA está autenticado, lo mandamos al panel -->
+                    <a href="{{ route('appIndex') }}" class="btn btn-sm btn-success w-100 w-lg-auto ms-lg-2">Ir a Panel</a>
+                @endauth
+
+                @guest
+                    <!-- Si el usuario es un invitado (no se ha logueado), ve el botón de Login -->
+                    <a href="{{ route('login') }}" class="btn btn-sm btn-outline-success w-100 w-lg-auto ms-lg-2">Login</a>
+                @endguest
             </div>
 
         </div>
