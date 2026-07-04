@@ -1,4 +1,4 @@
-<header class="bg-white py-3 px-4 border-bottom">
+<header class="bg-white py-3 px-4">
     <div class="row align-items-center g-3">
     
         <!-- Botón de menú (Solo visible en móviles/tablets para abrir el Sidebar) -->

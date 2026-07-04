@@ -1,4 +1,4 @@
-<div class="offcanvas-lg offcanvas-start text-bg-dark flex-shrink-0 p-3" 
+<div class="offcanvas-lg offcanvas-start flex-shrink-0 p-3 rounded-bottom-lg-3 shadow-sm" 
     tabindex="-1" 
     id="sidebarMenu" 
     aria-labelledby="sidebarMenuLabel" 
@@ -15,21 +15,25 @@
        <a href="#" class="d-none d-lg-flex align-items-center justify-content-center w-100 mb-3 text-decoration-none">
             <span class="fs-4 fw-bold text-success">FutGo</span> 
         </a>
-        <hr class="d-none d-lg-block text-white-50">
+
+        <br>
         
         <ul class="nav nav-pills flex-column mb-auto">
             <li class="nav-item"> 
-                <a href="#" class="nav-link active bg-success text-white" aria-current="page">
+                <a href="#" class="nav-link active bg-success text-black" aria-current="page">
                     Home
                 </a> 
             </li>
+
+            <hr class="text-black">
+
             <li>
-                <a href="#" class="nav-link text-white-50">Partidos</a>
+                <a href="#" class="nav-link text-black">Partidos</a>
             </li>
             <li>
-                <a href="#" class="nav-link text-white-50">Equipos</a>
+                <a href="#" class="nav-link text-black">Equipos</a>
             </li>
         </ul>
-        <hr class="text-white-50">
+        <hr class="text-black">
     </div>
 </div>

@@ -21,13 +21,14 @@
 
         <!-- CONTENEDOR DERECHO (Header + Contenido) -->
         <div class="d-flex flex-column flex-grow-1 bg-light min-vw-0">
-            
-            <!-- HEADER -->
-            @include('admin.template.components.header')
-            <!-- Fin HEADER -->
+    
+            <!-- Header -->
+            <div class="ms-lg-3 bg-white rounded-bottom-lg-3 shadow-sm">
+                @include('admin.template.components.header')
+            </div>
 
-            <!-- CONTENIDO PRINCIPAL (Fluido) -->
-            <main class="p-4">
+            <!-- Contenido principal -->
+            <main class="p-4 ms-lg-3 mt-4 bg-white rounded-3 shadow-sm">
                 @yield('content')
             </main>
 
