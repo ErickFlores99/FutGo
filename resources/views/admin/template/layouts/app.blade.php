@@ -27,7 +27,7 @@
             <!-- Fin Header -->
 
             <!-- Contenido principal -->
-            <main>
+            <main class="pt-4 ps-4">
                 @yield('content')
             </main>
         </div>
