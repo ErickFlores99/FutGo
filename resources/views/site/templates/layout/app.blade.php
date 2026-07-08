@@ -6,7 +6,11 @@
     <title>FutGo | Home</title>
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="{{ asset('assets/libs/bootstrap-5.3/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/libs/Bootstrap-5.3/css/bootstrap.min.css') }}">
+
+    <!-- Select2 -->
+    <link rel="stylesheet" href="{{ asset('assets/libs/Select2/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/libs/Select2/css/select2-bootstrap-5-theme.min.css') }}">
 
     <!-- DataTables -->
     <link rel="stylesheet" href="{{ asset('assets/libs/datatables/datatables.min.css') }}">
@@ -36,7 +40,11 @@
     <script src="{{ asset('assets/libs/JQuery-4.0.0/jquery-4.0.0.min.js') }}"></script>
 
     <!-- Bootstrap -->
-    <script src="{{ asset('assets/libs/bootstrap-5.3/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/Bootstrap-5.3/js/bootstrap.bundle.min.js') }}"></script>
+
+    <!-- Select2 -->
+    <script src="{{ asset('assets/libs/Select2/js/select2.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/Select2/js/i18n/es.js') }}"></script>
 
     <!-- DataTables -->
     <script src="{{ asset('assets/libs/datatables/datatables.min.js') }}"></script>

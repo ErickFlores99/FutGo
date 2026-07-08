@@ -8,6 +8,11 @@ Route::get('/', function () {
     return view('site.index');
 })->name('site.index');
 
+Route::get('/select', function () {
+    return view('site.ui-elements.select');
+})->name('site.select');
+
+
 // Rutas para usuarios no autenticados (Invitados)
 Route::middleware('guest')->group(function () {
     // Muestra el formulario de login
