@@ -19,6 +19,7 @@
         <div class="card-body">
             <h5 class="card-title">Explora los Componentes</h5>
             <a href="{{ route('site.select') }}" class="btn btn-primary">Ver Select</a>
+            <a href="{{ route('site.sweetalert') }}" class="btn btn-primary">Ver SweetAlert</a>
         </div>
     </div>
 @endsection

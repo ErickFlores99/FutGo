@@ -12,6 +12,10 @@ Route::get('/select', function () {
     return view('site.ui-elements.select');
 })->name('site.select');
 
+Route::get('/sweetalert', function () {
+    return view('site.ui-elements/sweetalert');
+})->name('site.sweetalert');
+
 
 // Rutas para usuarios no autenticados (Invitados)
 Route::middleware('guest')->group(function () {
