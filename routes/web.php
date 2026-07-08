@@ -16,6 +16,10 @@ Route::get('/sweetalert', function () {
     return view('site.ui-elements/sweetalert');
 })->name('site.sweetalert');
 
+Route::get('/datatables', function () {
+    return view('site.ui-elements.datatables');
+})->name('site.datatables');
+
 
 // Rutas para usuarios no autenticados (Invitados)
 Route::middleware('guest')->group(function () {

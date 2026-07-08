@@ -20,6 +20,7 @@
             <h5 class="card-title">Explora los Componentes</h5>
             <a href="{{ route('site.select') }}" class="btn btn-primary">Ver Select</a>
             <a href="{{ route('site.sweetalert') }}" class="btn btn-primary">Ver SweetAlert</a>
+            <a href="{{ route('site.datatables') }}" class="btn btn-primary">Ver DataTables</a>
         </div>
     </div>
 @endsection

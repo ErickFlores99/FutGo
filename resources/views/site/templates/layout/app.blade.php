@@ -14,6 +14,7 @@
 
     <!-- DataTables -->
     <link rel="stylesheet" href="{{ asset('assets/libs/datatables/datatables.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/datatable.theme.css') }}">
 
     <!-- SweetAlert2 -->
     <link rel="stylesheet" href="{{ asset('assets/libs/sweetalert2/sweetalert2.min.css') }}">
@@ -48,6 +49,7 @@
 
     <!-- DataTables -->
     <script src="{{ asset('assets/libs/datatables/datatables.min.js') }}"></script>
+    <script src="{{ asset('assets/js/datatable.config.js') }}"></script>
 
     <!-- SweetAlert -->
     <script src="{{ asset('assets/libs/SweetAlert2/sweetalert2.min.js') }}"></script>

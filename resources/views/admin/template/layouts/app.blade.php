@@ -14,6 +14,7 @@
 
     <!-- DataTables -->
     <link rel="stylesheet" href="{{ asset('assets/libs/datatables/datatables.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/datatable.theme.css') }}">
 
     <!-- Select2 -->
     <link rel="stylesheet" href="{{ asset('assets/libs/Select2/select2.min.css') }}">
@@ -58,6 +59,7 @@
 
     <!-- DataTables -->
     <script src="{{ asset('assets/libs/datatables/datatables.min.js') }}"></script>
+    <script src="{{ asset('assets/js/datatable.config.js') }}"></script>
 
     <!-- Select2 -->
     <script src="{{ asset('assets/libs/Select2/select2.min.js') }}"></script>

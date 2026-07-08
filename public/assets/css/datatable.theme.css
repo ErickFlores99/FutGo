@@ -1,0 +1,99 @@
+/*==========================================================
+=            PLAYGO DATATABLE THEME
+==========================================================*/
+
+/* Tabla */
+
+table.dataTable{
+
+    font-size: .85rem;
+
+    border-collapse: separate;
+
+    border-spacing: 0;
+
+}
+
+/* Encabezados */
+
+table.dataTable thead th{
+
+    background:#f8f9fa;
+
+    color:#495057;
+
+    font-weight:600;
+
+    white-space:nowrap;
+
+    border-bottom:2px solid #dee2e6;
+
+}
+
+/* Celdas */
+
+table.dataTable tbody td{
+
+    vertical-align:middle;
+
+    white-space:nowrap;
+
+}
+
+/* Hover */
+
+table.dataTable tbody tr:hover{
+
+    background:#f8f9fa;
+
+}
+
+/* Contenedor */
+
+.dataTables_wrapper{
+
+    font-size:.85rem;
+
+}
+
+/* Buscador */
+
+.dataTables_filter input{
+
+    border-radius:.5rem;
+
+}
+
+/* Select de registros */
+
+.dataTables_length select{
+
+    border-radius:.5rem;
+
+}
+
+/* Información */
+
+.dataTables_info{
+
+    color:#6c757d;
+
+}
+
+/* Paginación */
+
+.dataTables_paginate .paginate_button{
+
+    border-radius:.5rem !important;
+
+}
+
+/* Página actual */
+
+.dataTables_paginate .current{
+
+    background:#0d6efd !important;
+
+    color:white !important;
+
+}
