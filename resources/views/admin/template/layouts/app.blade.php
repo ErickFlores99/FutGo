@@ -5,8 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administrador FutGo | Home</title>
 
-    <!-- Bootstrap 5.3 CSS -->
-    <link rel="stylesheet" href="{{ asset('assets/site/bootstrap-5.3/css/bootstrap.min.css') }}">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{{ asset('assets/libs/bootstrap-5.3/css/bootstrap.min.css') }}">
+
+    <!-- DataTables -->
+    <link rel="stylesheet" href="{{ asset('assets/libs/datatables/datatables.min.css') }}">
+
+    <!-- Select2 -->
+    <link rel="stylesheet" href="{{ asset('assets/libs/Select2/select2.min.css') }}">
+    
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="{{ asset('assets/libs/sweetalert2/sweetalert2.min.css') }}">
 
     <!-- CSS -->
     @yield('css')
@@ -33,8 +42,20 @@
         </div>
     </div>
 
-    <!-- JS Bootstrap 5.3 -->
-    <script src="{{ asset('assets/site/bootstrap-5.3/js/bootstrap.bundle.min.js') }}"></script>
+    <!-- JQuery -->
+    <script src="{{ asset('assets/libs/JQuery-4.0.0/jquery-4.0.0.min.js') }}"></script>
+
+    <!-- Bootstrap -->
+    <script src="{{ asset('assets/libs/bootstrap-5.3/js/bootstrap.bundle.min.js') }}"></script>
+
+    <!-- DataTables -->
+    <script src="{{ asset('assets/libs/datatables/datatables.min.js') }}"></script>
+
+    <!-- Select2 -->
+    <script src="{{ asset('assets/libs/Select2/select2.min.js') }}"></script>
+
+    <!-- SweetAlert -->
+    <script src="{{ asset('assets/libs/SweetAlert2/sweetalert2.min.js') }}"></script>
     
     <!-- JS -->
     @yield('js')
