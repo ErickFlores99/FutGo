@@ -11,14 +11,12 @@
     <!-- Select2 -->
     <link rel="stylesheet" href="{{ asset('assets/libs/Select2/css/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/libs/Select2/css/select2-bootstrap-5-theme.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/select2.theme.css') }}">
 
     <!-- DataTables -->
     <link rel="stylesheet" href="{{ asset('assets/libs/datatables/datatables.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/datatable.theme.css') }}">
 
-    <!-- Select2 -->
-    <link rel="stylesheet" href="{{ asset('assets/libs/Select2/select2.min.css') }}">
-    
     <!-- SweetAlert2 -->
     <link rel="stylesheet" href="{{ asset('assets/libs/sweetalert2/sweetalert2.min.css') }}">
 
@@ -63,6 +61,7 @@
 
     <!-- Select2 -->
     <script src="{{ asset('assets/libs/Select2/select2.min.js') }}"></script>
+    <script src="{{ asset('assets/js/select2.config.js') }}"></script>
 
     <!-- SweetAlert -->
     <script src="{{ asset('assets/libs/SweetAlert2/sweetalert2.min.js') }}"></script>

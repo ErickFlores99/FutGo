@@ -1,0 +1,193 @@
+/*==========================================================
+=            PLAYGO SELECT2 THEME
+==========================================================*/
+
+/* Contenedor */
+
+.select2-container{
+
+    width:100% !important;
+
+    font-size:.90rem;
+
+}
+
+/*==========================================================
+=            SELECT SIMPLE
+==========================================================*/
+
+.select2-container--bootstrap-5 .select2-selection{
+
+    min-height:38px;
+
+    border-radius:.60rem;
+
+    border:1px solid #dee2e6;
+
+    transition:.25s;
+
+    background:#fff;
+
+}
+
+/* Hover */
+
+.select2-container--bootstrap-5 .select2-selection:hover{
+
+    border-color:#0d6efd;
+
+}
+
+/* Focus */
+
+.select2-container--bootstrap-5.select2-container--focus .select2-selection{
+
+    border-color:#0d6efd;
+
+    box-shadow:0 0 0 .15rem rgba(13,110,253,.15);
+
+}
+
+/*==========================================================
+=            TEXTO
+==========================================================*/
+
+.select2-container--bootstrap-5 .select2-selection__rendered{
+
+    color:#495057;
+
+    line-height:36px;
+
+    padding-left:.30rem;
+
+}
+
+/* Placeholder */
+
+.select2-container--bootstrap-5 .select2-selection__placeholder{
+
+    color:#adb5bd;
+
+}
+
+/*==========================================================
+=            FLECHA
+==========================================================*/
+
+.select2-container--bootstrap-5 .select2-selection__arrow{
+
+    height:36px;
+
+}
+
+/*==========================================================
+=            DROPDOWN
+==========================================================*/
+
+.select2-dropdown{
+
+    border-radius:.75rem;
+
+    border:1px solid #dee2e6;
+
+    overflow:hidden;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+}
+
+/*==========================================================
+=            BUSCADOR
+==========================================================*/
+
+.select2-search__field{
+
+    border-radius:.5rem !important;
+
+    padding:.45rem .75rem !important;
+
+}
+
+/*==========================================================
+=            OPCIONES
+==========================================================*/
+
+.select2-results__option{
+
+    padding:.55rem .80rem;
+
+    font-size:.90rem;
+
+}
+
+.select2-results__option--highlighted{
+
+    background:#0d6efd !important;
+
+    color:white !important;
+
+}
+
+/*==========================================================
+=            MULTIPLE
+==========================================================*/
+
+.select2-container--bootstrap-5 .select2-selection--multiple{
+
+    min-height:38px;
+
+    border-radius:.60rem;
+
+}
+
+/* Chips */
+
+.select2-selection__choice{
+
+    background:#0d6efd !important;
+
+    color:#fff !important;
+
+    border:none !important;
+
+    border-radius:20px !important;
+
+    padding:2px 10px !important;
+
+    margin-top:5px !important;
+
+}
+
+/* X */
+
+.select2-selection__choice__remove{
+
+    color:#fff !important;
+
+    margin-right:6px;
+
+}
+
+/*==========================================================
+=            DESHABILITADO
+==========================================================*/
+
+.select2-container--disabled .select2-selection{
+
+    background:#f8f9fa;
+
+    cursor:not-allowed;
+
+}
+
+/*==========================================================
+=            CLEAR
+==========================================================*/
+
+.select2-selection__clear{
+
+    color:#dc3545;
+
+    font-size:18px;
+
+}
