@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FutGo - Iniciar Sesión</title>
     <!-- CSS de Bootstrap -->
-    <link href="{{ asset('assets/site/Bootstrap-5.3/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/libs/Bootstrap-5.3/css/bootstrap.min.css') }}" rel="stylesheet">
 </head>
 <body class="bg-light">
 
@@ -87,6 +87,6 @@
     </div>
 
     <!-- JS de Bootstrap -->
-    <script src="{{ asset('assets/site/Bootstrap-5.3/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/Bootstrap-5.3/js/bootstrap.bundle.min.js') }}"></script>
 </body>
 </html>
