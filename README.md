@@ -1,92 +1,325 @@
 # ⚽ FutGo
 
-**FutGo** es un sistema integral de gestión deportiva diseñado para informar, organizar y administrar una o varias competencias de fútbol, orientadas y segmentadas por diferentes categorías. 
+**FutGo** es un sistema integral de gestión deportiva diseñado para informar, organizar y administrar una o varias competencias de fútbol, orientadas y segmentadas por diferentes categorías.
 
-El objetivo principal es centralizar la logística de los torneos, desde la inscripción de equipos hasta la generación de roles de juego y tablas de posiciones, ofreciendo tanto un panel administrativo privado como una vista pública para los aficionados y jugadores.
-
----
-
-## 🚀 Características Principales
-
-* **Multicompetencia y Categorías:** Gestión de múltiples torneos simultáneos divididos por categorías (ej. Libre, Veteranos, Femenil).
-* **Administración de Equipos:** Registro y control de los equipos participantes (`equipos`).
-* **Logística Deportiva:** Generación automática o manual del rol de juegos y actualización en tiempo real de la tabla de posiciones.
-* **Separación de Entornos:** 
-  * **Portal Público (Site):** Donde los jugadores y aficionados pueden ver los resultados y estadísticas.
-  * **Panel de Control (Admin):** Área segura para la gestión de la liga.
+El objetivo principal es centralizar la logística de los torneos, desde la inscripción de equipos hasta la generación de calendarios, captura de resultados, estadísticas y tablas de posiciones, ofreciendo tanto un panel administrativo privado como una vista pública para jugadores y aficionados.
 
 ---
 
-## 🛠 Tecnologías Utilizadas
+# 🚀 Características Principales
 
-* **Backend:** PHP 8.3.30 | Laravel (Framework)
-* **Frontend Público & Admin:** HTML5, CSS3, JavaScript (jQuery), Bootstrap 5 (Plantilla Sneat)
-* **Herramientas Extra:** SweetAlert2 (Notificaciones), Maatwebsite/Excel (Importación/Exportación de datos)
+* **Multicompetencia y Categorías**
+
+  * Gestión de múltiples torneos.
+  * Competencias por categoría y rama.
+
+* **Administración de Equipos**
+
+  * Equipos.
+  * Jugadores.
+  * Árbitros.
+  * Sedes.
+
+* **Logística Deportiva**
+
+  * Jornadas.
+  * Partidos.
+  * Roles de juego.
+  * Resultados.
+  * Estadísticas.
+
+* **Portal Público**
+
+  * Calendario.
+  * Resultados.
+  * Tabla General.
+  * Goleadores.
+  * Estadísticas.
+
+* **Panel Administrativo**
+
+  * Administración completa de la competencia.
+  * Catálogos.
+  * Configuración.
+  * Seguridad.
 
 ---
 
-## 📁 Arquitectura y Estructura del Proyecto
+# 🛠 Tecnologías Utilizadas
 
-Para mantener el código limpio, escalable y siguiendo el Principio de Responsabilidad Única, el proyecto divide su lógica (`Controllers`, `Requests`, `Services`, `Views` y `Routes`) en tres contextos principales:
+## Backend
 
-* `Admin`: Toda la lógica del panel de control privado.
-* `Site`: El portal público e informativo.
-* `Auth`: Gestión de inicio de sesión y autenticación.
+* PHP 8.3+
+* Laravel 12
+
+## Frontend
+
+* HTML5
+* CSS3
+* JavaScript (ES6)
+* jQuery
+* Bootstrap 5
+
+---
+
+# 📦 Librerías JavaScript
+
+El proyecto utiliza librerías independientes para mantener una interfaz moderna, reutilizable y fácil de mantener.
+
+| Librería      | Uso                                      |
+| ------------- | ---------------------------------------- |
+| jQuery        | Manipulación del DOM y AJAX              |
+| Bootstrap 5   | Framework CSS y componentes              |
+| DataTables    | Tablas dinámicas                         |
+| Select2       | Selects avanzados                        |
+| SweetAlert2   | Alertas y confirmaciones                 |
+| Laravel Excel | Importación y exportación de información |
+
+---
+
+# 🎨 Organización de Assets
+
+Las librerías se encuentran organizadas dentro de **public/assets**.
 
 ```text
-app/
-├── Http/
-│   ├── Controllers/
-│   │   ├── Admin/
-│   │   ├── Auth/
-│   │   └── Site/
-│   └── Requests/
-│       ├── Admin/
-│       ├── Auth/
-│       └── Site/
-├── Services/
-│   ├── Admin/
-│   ├── Auth/
-│   └── Site/
-|
-resources/
-└── views/
-    ├── admin/
-    ├── auth/
-    ├── shared/
-    └── site/
-|
-routes/
-├── admin.php
-├── site.php
-└── web.php
-|
 public/
-└── assets/
-    ├── admin/
-    └── site/
 
+└── assets/
+
+    ├── css/
+
+    │   ├── styles.css
+
+    │   ├── datatable.theme.css
+
+    │   └── select2.theme.css
+
+    │
+
+    ├── js/
+
+    │   ├── app.js
+
+    │   ├── datatable.config.js
+
+    │   └── select2.config.js
+
+    │
+
+    └── libs/
+
+        ├── bootstrap/
+
+        ├── jquery/
+
+        ├── datatables/
+
+        ├── select2/
+
+        ├── sweetalert2/
+
+        └── excel/
 ```
 
 ---
 
-## ⚙️ Instalación y Configuración
-* **Sigue estos pasos para levantar el entorno de desarrollo local:**
+# 🎯 Temas personalizados
 
-* **Clonar el repositorio:**
-    git clone [https://github.com/tu-usuario/futgo.git]
-    cd futgo
+Con el objetivo de mantener una apariencia uniforme en toda la aplicación, cada componente posee su propio archivo de estilos.
 
-* **Instalar dependencias de PHP:**
-    composer install
+## DataTables
 
-* **Configurar el entorno:**
-    Copia el archivo de ejemplo y configura tus credenciales de base de datos.
+```text
+assets/css/datatable.theme.css
+```
 
-    cp .env.example .env
+Personaliza:
 
-* **Generar la clave de la aplicación:**
-    php artisan key:generate
+* Encabezados
+* Paginación
+* Buscador
+* Selector de registros
+* Hover
+* Tipografía
+* Responsive
 
-* **Ejecutar migraciones y seeders:**
-    php artisan migrate --seed
+Configuración global:
+
+```text
+assets/js/datatable.config.js
+```
+
+Incluye:
+
+* Idioma español
+* Responsive
+* Scroll
+* Cantidad de registros
+* Configuración reutilizable
+
+---
+
+## Select2
+
+```text
+assets/css/select2.theme.css
+```
+
+Personaliza:
+
+* Bordes
+* Placeholder
+* Dropdown
+* Chips
+* Focus
+* Hover
+* Tema Bootstrap 5
+
+Configuración global:
+
+```text
+assets/js/select2.config.js
+```
+
+Características:
+
+* Inicialización automática.
+* Placeholder configurable.
+* allowClear.
+* Soporte para múltiples selecciones.
+* Tags.
+* Configuración mediante atributos `data-*`.
+* Preparado para integración con AJAX.
+
+Ejemplo:
+
+```html
+<select
+    class="select2"
+    data-placeholder="Seleccione un equipo"
+    data-allow-clear="true">
+
+</select>
+```
+
+---
+
+## SweetAlert2
+
+Utilizado para todas las notificaciones del sistema.
+
+Tipos de alertas implementadas:
+
+* Success
+* Error
+* Warning
+* Info
+* Question
+* Confirmación
+* Toast
+* Loading
+
+---
+
+# 📁 Arquitectura del Proyecto
+
+Para mantener el código limpio, escalable y siguiendo el principio de responsabilidad única, el proyecto divide su lógica en tres contextos.
+
+```text
+app/
+
+├── Http/
+
+│   ├── Controllers/
+│   │   ├── Admin/
+│   │   ├── Auth/
+│   │   └── Site/
+
+│   └── Requests/
+│       ├── Admin/
+│       ├── Auth/
+│       └── Site/
+
+├── Services/
+│   ├── Admin/
+│   ├── Auth/
+│   └── Site/
+
+resources/
+└── views/
+    ├── admin/
+    ├── auth/
+    └── site/
+
+routes/
+└── web.php
+```
+
+---
+
+# ⚙️ Instalación
+
+Clonar el repositorio.
+
+```bash
+git clone https://github.com/tu-usuario/futgo.git
+
+cd futgo
+```
+
+Instalar dependencias.
+
+```bash
+composer install
+```
+
+Configurar el entorno.
+
+```bash
+cp .env.example .env
+```
+
+Generar la clave.
+
+```bash
+php artisan key:generate
+```
+
+Ejecutar migraciones.
+
+```bash
+php artisan migrate --seed
+```
+
+Levantar el servidor.
+
+```bash
+php artisan serve
+```
+
+---
+
+# 📚 UI Kit
+
+El proyecto incluye una colección de componentes reutilizables para mantener una interfaz consistente.
+
+Actualmente dispone de ejemplos para:
+
+* Bootstrap 5
+* Select2
+* DataTables
+* SweetAlert2
+
+Cada componente cuenta con:
+
+* Configuración global.
+* Tema personalizado.
+* Ejemplos funcionales.
+* Código reutilizable.
+* Compatibilidad con Bootstrap 5.
+
+---
+
+# 📌 Objetivo del Proyecto
+
+FutGo busca convertirse en una plataforma modular para la administración de competencias deportivas, permitiendo gestionar múltiples ligas y torneos desde un único sistema, utilizando componentes reutilizables y una arquitectura escalable basada en Laravel.
