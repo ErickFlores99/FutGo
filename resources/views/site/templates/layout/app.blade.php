@@ -20,6 +20,15 @@
     <!-- SweetAlert2 -->
     <link rel="stylesheet" href="{{ asset('assets/libs/sweetalert2/sweetalert2.min.css') }}">
 
+    <!-- Boxicons -->
+    <link rel="stylesheet" href="{{ asset('assets/icons/boxicons/boxicons.css') }}">
+
+    <!-- Tabler Icons -->
+    <link rel="stylesheet" href="{{ asset('assets/icons/tabler-icons/tabler-icons.css') }}">
+
+    <!-- Themify Icons -->
+    <link rel="stylesheet" href="{{ asset('assets/icons/ti-icons/themify-icons.css') }}">
+
     <!-- CSS -->
     @yield('css')
 </head>
