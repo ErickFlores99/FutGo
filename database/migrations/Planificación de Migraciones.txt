@@ -1,0 +1,76 @@
+Planificación de Migraciones
+
+# Migración: Usuarios
+
+## Tabla: users
+
+    - id
+    - name -> string
+    - email -> string (unique)
+    - email_verified_at -> timestamp (nullable)
+    - password -> string
+    - estatus -> tinyInteger()->default(1)
+    0 Inactivo, 1 Activo, 2 Bloqueado, 3 Eliminado, 4 Pendiente, 5 Archivado, 6 Expirado, 7 Deshabilitado, 8 Pendiente de verificación, 9 Verificado, 10 Desactivado
+    - rememberToken()
+    - timestamps()
+
+## Tabla: roles
+    - id
+    - nombre -> string (unique)
+    - timestamps()
+
+## Tabla: rol_user
+    - rol_id -> foreignId()->constrained('roles')
+    - user_id -> foreignId()->constrained('users')
+    - timestamps()
+
+
+
+# Migración: Competencias
+
+## Tabla: divisiones
+    - id
+    - nombre -> string (unique)
+    - descripcion -> string (nullable)
+
+## Tabla: tipos_competencia
+    - id
+    - nombre -> string (unique)
+
+## Tabla: competencias
+    - id
+    - nombre -> string
+    - descripcion -> text (nullable)
+    - tipo_id -> foreignId()->constrained('tipos_competencia')
+    - division_id -> foreignId()->constrained('divisiones')
+    - administrador_id -> foreignId()->constrained('users')
+    - fecha_inicio -> date (nullable)
+    - fecha_fin -> date (nullable)
+    - estatus -> tinyInteger()->default(0)
+    0 Pendiente,1 Activa,2 Suspendida,3 Finalizada,4 Cancelada
+    - timestamps()
+
+
+## Tabla: competencia_dia
+    - competencia_id -> foreignId()->constrained('competencias')
+    - dia -> tinyInteger (nullable)
+    1 Lunes, 2 Martes, 3 Miercoles, 4 Jueves, 5 Viernes, 6 Sabado, 7 Domingo
+    - timestamps()
+
+## Tabla: categorias
+    - id
+    - competencia_id -> foreignId()->constrained('competencias')
+    - nombre -> string
+    - descripcion -> string (nullable)
+    - edad_minima -> integer (nullable)
+    - edad_maxima -> integer (nullable)
+    - estatus -> tinyInteger()->default(1)
+    0 Inactivo, 1 Activo, 2 Bloqueado, 3 Eliminado
+    - timestamps()
+
+## Tabla: categorias_competencia
+    - categoria_id -> foreignId()->constrained('categorias')
+    - competencia_id -> foreignId()->constrained('competencias')
+    - timestamps()
+
+Recomendadas: equipos, jugadores, cuerpos_tecnicos, estadios, arbitros, temporadas, jornadas, partidos, alineaciones, eventos_partido, tabla_posiciones, sanciones, inscripciones_equipos y documentos_equipos.
