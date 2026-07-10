@@ -54,6 +54,15 @@ return new class extends Migration
             $table->timestamps();
         });
 
+        Schema::create('dias_competencia', function (Blueprint $table) {
+            $table->id();
+            
+            $table->tinyInteger('dia')->comment('1=Lunes, 2=Martes, 3=Miercoles, 4=Jueves, 5=Viernes, 6=Sabado, 7=Domingo');
+            $table->foreignId('competencia_id')->constrained('competencias')->onDelete('cascade');
+            
+            $table->timestamps();
+        });
+
         Schema::create('categorias_competencia', function (Blueprint $table) {
             $table->id();
             
