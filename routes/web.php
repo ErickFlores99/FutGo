@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\CompetenciaController;
+
 // Vista pública de inicio
 Route::get('/', function () {
     return view('site.index');
@@ -39,12 +42,15 @@ Route::post('/logout', [LoginController::class, 'destroy'])
 // Rutas protegidas de la aplicación usando prefijo y tu nuevo middleware
 Route::group(["prefix" => "/app", 'middleware' => ['auth', 'revalidate']], function () {
     
-    // Al estar dentro del prefijo '/app', esta ruta es realmente '/app'
-    Route::get('/', function () {
-        return view('admin.index');
-    })->name('appIndex'); 
+    Route::get('/', [AdminController::class, 'index'])
+        ->name('appIndex');
     
-    // Ejemplo: Si mañana creas una ruta aquí adentro:
-    // Route::get('/profile') -> Su URL real será automáticamente '/app/profile'
+    // GRUPO DE RUTAS: COMPETENCIAS
+    Route::prefix('competencias')->group(function () {
+
+        Route::post('/crear', [CompetenciaController::class, 'crear'])
+            ->name('competencias.crear');
+
+    });
 
 });

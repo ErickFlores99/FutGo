@@ -85,4 +85,16 @@ class Competencia extends Model
             'categoria_id'
         )->withTimestamps();
     }
+
+    /**
+     * Dias asociadas.
+     */
+    public function dias()
+    {
+        return $this->belongsToMany(
+            DiaCompetencia::class,
+            'dia',
+            'competencia_id',
+        )->withTimestamps();
+    }
 }

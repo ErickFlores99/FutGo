@@ -1,6 +1,13 @@
 @extends('admin.template.layouts.app')
 
+@section('js')
+    <script src="{{ asset('admin/app.js') }}"></script>
+@endsection
+
 @section('content')
+
+@include('admin.template.components.modals.crear_competencia')
+
 <!-- Cabecera con título y acción global -->
 <div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-3 mb-4">
     <div>
@@ -8,8 +15,8 @@
         <p class="text-muted small mb-0">Monitoreo global y administración rápida de ligas y categorías en FutGo.</p>
     </div>
     <div>
-        <button class="btn btn-success fw-bold px-3 btn-sm d-flex align-items-center gap-1" data-bs-toggle="modal" data-bs-target="#crearCompetenciaModal">
-            <span>+</span> Registrar Nueva Competencia
+        <button class="btn btn-success fw-bold px-3 btn-sm d-flex align-items-center gap-1 rounded-4" data-bs-toggle="modal" data-bs-target="#crearCompetencia">
+            <i class="ri-add-circle-line"></i>Nueva Competencia
         </button>
     </div>
 </div>

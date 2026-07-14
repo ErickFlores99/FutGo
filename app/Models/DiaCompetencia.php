@@ -22,7 +22,7 @@ class DiaCompetencia extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'dias',
+        'dia',
         'competencia_id',
     ];
 

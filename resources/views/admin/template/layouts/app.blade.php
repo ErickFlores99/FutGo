@@ -42,7 +42,7 @@
             <!-- Fin Header -->
 
             <!-- Contenido principal -->
-            <main class="pt-4 ps-4">
+            <main class="py-3 px-4 rounded-4">
                 @yield('content')
             </main>
         </div>
@@ -63,7 +63,7 @@
     <script src="{{ asset('assets/js/datatable.config.js') }}"></script>
 
     <!-- Select2 -->
-    <script src="{{ asset('assets/libs/Select2/select2.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/Select2/js/select2.min.js') }}"></script>
     <script src="{{ asset('assets/js/select2.config.js') }}"></script>
 
     <!-- SweetAlert -->
