@@ -18,16 +18,23 @@ class CompetenciaCategoria extends Model
 
     public function competencia()
     {
-        return $this->belongsTo(Competencia::class);
+        return $this->belongsTo(
+            Competencia::class
+        );
     }
 
     public function categoria()
     {
-        return $this->belongsTo(Categoria::class);
+        return $this->belongsTo(
+            Categoria::class
+        );
     }
 
     public function divisiones()
     {
-        return $this->hasMany(CategoriaCompetenciaDivision::class);
+        return $this->hasMany(
+            CompetenciaCategoriaDivision::class,
+            'competencia_categoria_id'
+        );
     }
 }

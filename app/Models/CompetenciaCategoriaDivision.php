@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class CompetenciaCategoriaDivision extends Model
 {
@@ -11,7 +12,7 @@ class CompetenciaCategoriaDivision extends Model
     protected $table = 'competencia_div_cats';
 
     protected $fillable = [
-        'categoria_competencia_id',
+        'competencia_categoria_id',
         'division_id',
     ];
 
@@ -22,6 +23,8 @@ class CompetenciaCategoriaDivision extends Model
 
     public function division()
     {
-        return $this->belongsTo(Division::class);
+        return $this->belongsTo(
+            Division::class
+        );
     }
 }

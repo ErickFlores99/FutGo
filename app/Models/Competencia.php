@@ -30,7 +30,7 @@ class Competencia extends Model
 
     public function tipo()
     {
-        return $this->belongsTo(TipoCompetencia::class, 'tipo_id');
+        return $this->belongsTo(CompetenciaTipo::class, 'tipo_id');
     }
 
     public function administrador()
@@ -40,11 +40,11 @@ class Competencia extends Model
 
     public function categorias()
     {
-        return $this->hasMany(CategoriaCompetencia::class);
+        return $this->hasMany(CompetenciaCategoria::class);
     }
 
     public function dias()
     {
-        return $this->hasMany(DiaCompetencia::class);
+        return $this->hasMany(CompetenciaDia::class);
     }
 }
