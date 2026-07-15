@@ -38,7 +38,7 @@ return new class extends Migration
 
             $table->string('nombre', 100);
             $table->text('descripcion')->nullable();
-            $table->year('temporada');
+            $table->year('temporada')->nullable();
 
             $table->foreignId('tipo_id')
                 ->constrained('competencia_tipos')
@@ -48,8 +48,8 @@ return new class extends Migration
                 ->constrained('users')
                 ->cascadeOnDelete();
 
-            $table->date('fecha_inicio');
-            $table->date('fecha_fin');
+            $table->date('fecha_inicio')->nullable();
+            $table->date('fecha_fin')->nullable();
 
             $table->boolean('es_nocturna')->default(false);
 

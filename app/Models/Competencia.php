@@ -12,12 +12,13 @@ class Competencia extends Model
     protected $fillable = [
         'nombre',
         'descripcion',
+        'temporada',
         'tipo_id',
         'administrador_id',
         'fecha_inicio',
         'fecha_fin',
         'es_nocturna',
-        'estatus',
+        'estatus'
     ];
 
     protected $casts = [
