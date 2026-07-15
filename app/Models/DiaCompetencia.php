@@ -9,26 +9,13 @@ class DiaCompetencia extends Model
 {
     use HasFactory;
 
-    /**
-     * Tabla asociada al modelo.
-     *
-     * @var string
-     */
     protected $table = 'dias_competencia';
 
-    /**
-     * Los atributos asignables masivamente.
-     *
-     * @var array<int, string>
-     */
     protected $fillable = [
-        'dia',
         'competencia_id',
+        'dia',
     ];
 
-    /**
-     * Una categoría de competencia pertenece a una competencia.
-     */
     public function competencia()
     {
         return $this->belongsTo(Competencia::class);
