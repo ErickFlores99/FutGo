@@ -4,11 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CategoriaCompetenciaDivision extends Model
+class CompetenciaCategoriaDivision extends Model
 {
     use HasFactory;
 
-    protected $table = 'categorias_competencia_division';
+    protected $table = 'competencia_div_cats';
 
     protected $fillable = [
         'categoria_competencia_id',

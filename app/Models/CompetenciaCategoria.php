@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CategoriaCompetencia extends Model
+class CompetenciaCategoria extends Model
 {
     use HasFactory;
 
-    protected $table = 'categorias_competencia';
+    protected $table = 'competencia_categorias';
 
     protected $fillable = [
         'competencia_id',

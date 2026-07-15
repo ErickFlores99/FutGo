@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Categoria;
 use App\Models\Division;
-use App\Models\TipoCompetencia;
+use App\Models\CompetenciaTipo;
 use Illuminate\Database\Seeder;
 
 class CatalogoCompetenciaSeeder extends Seeder
@@ -31,9 +31,6 @@ class CatalogoCompetenciaSeeder extends Seeder
         foreach ($divisiones as $division) {
             Division::updateOrCreate(
                 ['nombre' => $division],
-                [
-                    'descripcion' => null,
-                ]
             );
         }
 
@@ -44,47 +41,17 @@ class CatalogoCompetenciaSeeder extends Seeder
         */
 
         $categorias = [
-            [
-                'nombre' => 'Libre',
-                'descripcion' => null,
-                'edad_minima' => null,
-                'edad_maxima' => null,
-            ],
-            [
-                'nombre' => 'Juvenil',
-                'descripcion' => null,
-                'edad_minima' => 15,
-                'edad_maxima' => 17,
-            ],
-            [
-                'nombre' => 'Infantil',
-                'descripcion' => null,
-                'edad_minima' => 8,
-                'edad_maxima' => 14,
-            ],
-            [
-                'nombre' => 'Mixto',
-                'descripcion' => null,
-                'edad_minima' => 18,
-                'edad_maxima' => null,
-            ],
-            [
-                'nombre' => 'Femenil',
-                'descripcion' => null,
-                'edad_minima' => 15,
-                'edad_maxima' => null,
-            ],
-            [
-                'nombre' => 'Veteranos',
-                'descripcion' => null,
-                'edad_minima' => 35,
-                'edad_maxima' => null,
-            ],
+            'Libre',
+            'Juvenil',
+            'Infantil',
+            'Mixto',
+            'Femenil',
+            'Veteranos',
         ];
 
         foreach ($categorias as $categoria) {
             Categoria::updateOrCreate(
-                ['nombre' => $categoria['nombre']],
+                ['nombre' => $categoria],
             );
         }
 
@@ -104,7 +71,7 @@ class CatalogoCompetenciaSeeder extends Seeder
         ];
 
         foreach ($tiposCompetencia as $tipo) {
-            TipoCompetencia::updateOrCreate(
+            CompetenciaTipo::updateOrCreate(
                 ['nombre' => $tipo]
             );
         }

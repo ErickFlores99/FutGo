@@ -13,34 +13,35 @@ return new class extends Migration
     {
         Schema::create('divisiones', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre',100)->unique();
+            $table->string('nombre', 100)->unique();
             $table->text('descripcion')->nullable();
             $table->timestamps();
         });
 
         Schema::create('categorias', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre',100)->unique();
+            $table->string('nombre', 100)->unique();
             $table->text('descripcion')->nullable();
             $table->unsignedSmallInteger('edad_minima')->nullable();
             $table->unsignedSmallInteger('edad_maxima')->nullable();
             $table->timestamps();
         });
 
-        Schema::create('tipos_competencia', function (Blueprint $table) {
+        Schema::create('competencia_tipos', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre')->unique();
+            $table->string('nombre', 100)->unique();
             $table->timestamps();
         });
 
         Schema::create('competencias', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre',100)->unique();
+
+            $table->string('nombre', 100);
             $table->text('descripcion')->nullable();
             $table->year('temporada');
 
             $table->foreignId('tipo_id')
-                ->constrained('tipo_competencias')
+                ->constrained('competencia_tipos')
                 ->cascadeOnDelete();
 
             $table->foreignId('administrador_id')
@@ -54,68 +55,70 @@ return new class extends Migration
 
             $table->tinyInteger('estatus')
                 ->default(0)
-                ->comment('0 Pendiente, 1 Activa, 2 Suspendida, 3 Finalizada, 4 Cancelada');
+                ->comment('0=Pendiente,1=Activa,2=Suspendida,3=Finalizada,4=Cancelada');
+
             $table->timestamps();
 
-            $table->unique([
-                'nombre',
-                'temporada'
-            ]);
+            $table->unique(
+                ['nombre', 'temporada'],
+                'uk_comp_nombre_temp'
+            );
         });
 
-        Schema::create('dias_competencia', function (Blueprint $table) {
+        Schema::create('competencia_dias', function (Blueprint $table) {
             $table->id();
 
             $table->foreignId('competencia_id')
-                ->constrained()
+                ->constrained('competencias')
                 ->cascadeOnDelete();
 
             $table->tinyInteger('dia')
-                ->comment('1=Lunes,2=Martes,...,7=Domingo');
+                ->comment('1=Lunes ... 7=Domingo');
 
             $table->timestamps();
 
-            $table->unique([
-                'competencia_id',
-                'dia'
-            ]);
+            $table->unique(
+                ['competencia_id', 'dia'],
+                'uk_comp_dia'
+            );
         });
 
-       Schema::create('categorias_competencia', function (Blueprint $table) {
+        Schema::create('competencia_categorias', function (Blueprint $table) {
             $table->id();
+
             $table->foreignId('competencia_id')
-                ->constrained()
+                ->constrained('competencias')
                 ->cascadeOnDelete();
 
             $table->foreignId('categoria_id')
-                ->constrained()
+                ->constrained('categorias')
                 ->cascadeOnDelete();
 
             $table->timestamps();
 
-            $table->unique([
-                'competencia_id',
-                'categoria_id'
-            ]);
+            $table->unique(
+                ['competencia_id', 'categoria_id'],
+                'uk_comp_cat'
+            );
         });
 
-        Schema::create('divisiones_categoria_competencia', function (Blueprint $table) {
+        Schema::create('competencia_div_cats', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('categoria_competencia_id')
-                ->constrained('categorias_competencia')
+            $table->foreignId('competencia_categoria_id')
+                ->constrained('competencia_categorias')
                 ->cascadeOnDelete();
 
             $table->foreignId('division_id')
-                ->constrained()
+                ->constrained('divisiones')
                 ->cascadeOnDelete();
 
             $table->timestamps();
 
-            $table->unique([
-                'categoria_competencia_id',
-                'division_id'
-            ]);
+            $table->unique(
+                ['competencia_categoria_id', 'division_id'],
+                'uk_comp_cat_div'
+            );
         });
     }
 
@@ -124,11 +127,11 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('divisiones_categoria_competencia');
-        Schema::dropIfExists('categorias_competencia');
-        Schema::dropIfExists('dias_competencia');
+        Schema::dropIfExists('competencia_div_cats');
+        Schema::dropIfExists('competencia_categorias');
+        Schema::dropIfExists('competencia_dias');
         Schema::dropIfExists('competencias');
-        Schema::dropIfExists('tipos_competencia');
+        Schema::dropIfExists('competencia_tipos');
         Schema::dropIfExists('categorias');
         Schema::dropIfExists('divisiones');
     }
