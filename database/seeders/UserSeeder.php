@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-use App\Models\Role;
+use App\Models\User\User;
+use App\Models\User\Role;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -30,14 +30,13 @@ class UserSeeder extends Seeder
             ]);
         }
 
-        User::factory()->create([
+        $user = User::create([
             'name' => 'FutGo',
             'email' => 'admin@futgo.com',
-            'password' => bcrypt('admin'), 
-            'estatus' => 1, // Activo
-            'created_at' => now(),
-            'updated_at' => now(),
-
-        ])->roles()->attach(Role::where('nombre', 'Administrador')->first()->id);
+            'password' => bcrypt('admin'),
+            'estatus' => 1,
+        ]);
+        
+        $user->roles()->attach(Role::where('nombre', 'Administrador')->first()->id);
     }
 }

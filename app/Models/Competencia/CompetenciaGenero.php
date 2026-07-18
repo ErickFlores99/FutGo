@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Competencia;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class CompetenciaDivision extends Model
+class CompetenciaGenero extends Model
 {
     /**
      * Tabla asociada al modelo.
      *
      * @var string
      */
-    protected $table = 'competencia_divisiones';
+    protected $table = 'competencia_generos';
 
     /**
      * Atributos asignables masivamente.
@@ -26,19 +26,10 @@ class CompetenciaDivision extends Model
     ];
 
     /**
-     * Conversión de atributos.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'estatus' => 'integer',
-    ];
-
-    /**
-     * Una división puede pertenecer a muchos grupos de competencia.
+     * Un género puede pertenecer a muchos grupos de competencia.
      */
     public function grupos(): HasMany
     {
-        return $this->hasMany(CompetenciaGrupo::class, 'division_id');
+        return $this->hasMany(CompetenciaGrupo::class, 'genero_id');
     }
 }

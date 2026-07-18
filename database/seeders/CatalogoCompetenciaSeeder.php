@@ -3,10 +3,10 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\CompetenciaTipo;
-use App\Models\CompetenciaGenero;
-use App\Models\CompetenciaCategoria;
-use App\Models\CompetenciaDivision;
+use App\Models\Competencia\CompetenciaTipo;
+use App\Models\Competencia\CompetenciaGenero;
+use App\Models\Competencia\CompetenciaCategoria;
+use App\Models\Competencia\CompetenciaDivision;
 
 class CatalogoCompetenciaSeeder extends Seeder
 {
