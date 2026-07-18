@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 
-use App\Models\TipoCompetencia;
-use App\Models\Categoria;
-use App\Models\Division;
+use App\Models\Competencia\CompetenciaTipo;
+use App\Models\Competencia\CompetenciaCategoria;
+use App\Models\Competencia\CompetenciaDivision;
+use App\Models\Competencia\CompetenciaGenero;
+use App\Models\Competencia\Competencia;
 
 class AdminController extends Controller
 {
@@ -17,11 +19,18 @@ class AdminController extends Controller
     {
         return view('admin.index', [
 
-            'tiposCompetencia' => TipoCompetencia::all(),
+           'competencias' => Competencia::with([
+                'dias',
+                'grupos',
+            ])->get(),
 
-            'categorias' => Categoria::all(),
+            'tiposCompetencia' => CompetenciaTipo::all(),
 
-            'divisiones' => Division::all(),
+            'categorias' => CompetenciaCategoria::all(),
+
+            'divisiones' => CompetenciaDivision::all(),
+
+            'generos' => CompetenciaGenero::all(),
 
         ]);
     }

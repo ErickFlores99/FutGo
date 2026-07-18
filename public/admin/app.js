@@ -34,6 +34,8 @@ function crearCompetencia() {
                 document.getElementById('crearCompetencia')
             );
 
+            mostrarCompetencias();
+
             modal.hide();
         },
         error(xhr){
@@ -119,3 +121,21 @@ function limpiarErroresFormulario(formulario) {
     form.find('.invalid-feedback')
         .text('');
 }
+
+const mostrarCompetencias = () => {
+    // TODO:Obtenemos las columnas dependiendo de la vista seleccionada
+    $.ajax({
+        url: '/app/competencias/mostrar',
+        method: 'GET',
+        data: {
+            
+        },
+        success: function(data) {
+            $('#seccion_competencias').html(data);
+        }
+    });
+}
+
+/********************************* LLAMADO DE FUNCIONES ********************************/
+
+mostrarCompetencias();

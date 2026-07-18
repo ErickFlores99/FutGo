@@ -33,9 +33,9 @@
                         </div>
 
                         <!-- Tipo -->
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <label class="form-label">Tipo</label>
-                            <select class="form-select select2" name="tipo_competencia_id" required>
+                            <select class="form-select select2" name="tipo_competencia" required>
                                 <option value="">Seleccione...</option>
 
                                 @foreach($tiposCompetencia as $tipo)
@@ -50,9 +50,13 @@
                         </div>
 
                         <!-- Categoría -->
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <label class="form-label">Categoría</label>
-                            <select class="form-select select2" name="categoria_id" required>
+                            <select class="form-select select2" 
+                                multiple 
+                                name="categorias[]"
+                                required
+                            >
 
                                 <option value="">Seleccione...</option>
 
@@ -66,10 +70,14 @@
                             <div class="invalid-feedback"></div>
                         </div>
                         
-                        <!-- Género -->
-                        <div class="col-md-6">
+                        <!-- Division -->
+                        <div class="col-md-4">
                             <label class="form-label">Division</label>
-                            <select class="form-select select2" name="division_id">
+                            <select class="form-select select2" 
+                                name="divisiones[]"
+                                multiple 
+                                required
+                                >
                                 <option value="">Seleccione...</option>
 
                                 @foreach($divisiones as $division)
@@ -81,28 +89,32 @@
                             <div class="invalid-feedback"></div>
                         </div>
 
-                        <!-- Fecha Inicio -->
-                        <div class="col-md-6">
-                            <label class="form-label">Fecha de inicio</label>
-                            <input type="date"
-                                class="form-control"
-                                name="fecha_inicio">
-                        </div>
+                        <!-- Genero -->
+                        <div class="col-md-4">
+                            <label class="form-label">Género</label>
 
-                        <!-- Fecha Fin -->
-                        <div class="col-md-6">
-                            <label class="form-label">Fecha de finalización</label>
-                            <input type="date"
-                                class="form-control"
-                                name="fecha_fin">
+                            <select class="form-select select2"
+                                    name="generos[]"
+                                    multiple
+                                    required>
+
+                                @foreach($generos as $genero)
+                                    <option value="{{ $genero->id }}">
+                                        {{ $genero->nombre }}
+                                    </option>
+                                @endforeach
+
+                            </select>
+
+                            <div class="invalid-feedback"></div>
                         </div>
 
                         <!-- Dias Juego -->
-                        <div class="col-md-12">
+                        <div class="col-md-4">
                             <label class="form-label">Dias de Juego</label>
                             <select class="form-select select2"
                                     multiple 
-                                    name="dias_id[]"
+                                    name="dias[]"
                                     required
                             >
                                 <option value="">Seleccione...</option>
@@ -117,6 +129,22 @@
                             </select>
 
                             <div class="invalid-feedback"></div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-check">
+                                <br>
+                                <input
+                                    class="form-check-input col-2"
+                                    type="checkbox"
+                                    id="es_nocturna"
+                                    name="es_nocturna"
+                                >
+
+                                <label class="form-check-label" for="es_nocturna">
+                                    Es nocturna
+                                </label>
+                            </div>
                         </div>
 
                         <!-- Descripción -->

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 
 // Servicio encargado de la lógica de negocio.
-use App\Services\Admin\CompetenciaService;
+use App\Services\Admin\Competencia\CompetenciaService;
 
 // Request que valida la información.
 use App\Http\Requests\Admin\Competencia\CrearCompetenciaRequest;
@@ -18,6 +18,19 @@ class CompetenciaController extends Controller
     public function __construct(
         private CompetenciaService $service
     ){}
+
+    /**
+     * Mostrar las competencias registradas.
+     */
+    public function mostrar()
+    {
+        $competencias = $this->service->listar();
+
+        return view(
+            'admin.template.components.secciones.lista_competencias',
+            compact('competencias')
+        );
+    }
 
     /**
      * Crear una nueva competencia.
@@ -36,7 +49,5 @@ class CompetenciaController extends Controller
             'message' => 'Competencia registrada correctamente.'
 
         ]);
-      
-        
     }
 }

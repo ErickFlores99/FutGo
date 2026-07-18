@@ -21,61 +21,7 @@
     </div>
 </div>
 
-<!-- SECCIÓN 1: Tarjetas de Resumen Dinámico (Scroll horizontal automático en móviles) -->
-<div class="row g-3 mb-4 flex-nowrap overflow-auto pb-2 flex-md-wrap overflow-md-hidden">
-    
-    <!-- Card Liga 1 (Filtro Activo) -->
-    <div class="col-11 col-sm-6 col-md-4 col-xl-3" style="min-width: 240px;">
-        <div class="card border border-success bg-success-subtle bg-opacity-10 rounded-4 p-3 shadow-sm position-relative cursor-pointer">
-            <span class="position-absolute top-0 end-0 m-3 badge bg-success rounded-pill">Activa</span>
-            <h6 class="fw-bold text-success mb-1">Liga Premier</h6>
-            <p class="text-muted small mb-3">Nivel Nacional</p>
-            <div class="d-flex justify-content-between align-items-center border-top pt-2">
-                <span class="small text-dark fw-semibold">3 Categorías</span>
-                <span class="small text-muted">28 Equipos</span>
-            </div>
-        </div>
-    </div>
-
-    <!-- Card Liga 2 -->
-    <div class="col-11 col-sm-6 col-md-4 col-xl-3" style="min-width: 240px;">
-        <div class="card border bg-white rounded-4 p-3 shadow-sm position-relative cursor-pointer hover-shadow transition">
-            <span class="position-absolute top-0 end-0 m-3 badge bg-secondary rounded-pill">Activa</span>
-            <h6 class="fw-bold text-dark mb-1">Liga Regional</h6>
-            <p class="text-muted small mb-3">Jalisco / Occidente</p>
-            <div class="d-flex justify-content-between align-items-center border-top pt-2">
-                <span class="small text-dark fw-semibold">2 Categorías</span>
-                <span class="small text-muted">14 Equipos</span>
-            </div>
-        </div>
-    </div>
-
-    <!-- Card Liga 3 -->
-    <div class="col-11 col-sm-6 col-md-4 col-xl-3" style="min-width: 240px;">
-        <div class="card border bg-white rounded-4 p-3 shadow-sm position-relative cursor-pointer">
-            <span class="position-absolute top-0 end-0 m-3 badge bg-success rounded-pill">Activa</span>
-            <h6 class="fw-bold text-dark mb-1">Copa Universitaria</h6>
-            <p class="text-muted small mb-3">Intercolegial</p>
-            <div class="d-flex justify-content-between align-items-center border-top pt-2">
-                <span class="small text-dark fw-semibold">1 Categoría</span>
-                <span class="small text-muted">8 Equipos</span>
-            </div>
-        </div>
-    </div>
-
-    <!-- Card Liga 4 (Inactiva o Pausada) -->
-    <div class="col-11 col-sm-6 col-md-4 col-xl-3" style="min-width: 240px;">
-        <div class="card border bg-white rounded-4 p-3 shadow-sm opacity-75 position-relative">
-            <span class="position-absolute top-0 end-0 m-3 badge bg-warning text-dark rounded-pill">En Pausa</span>
-            <h6 class="fw-bold text-muted mb-1">Liga Nocturna</h6>
-            <p class="text-muted small mb-3">Fútbol 7 Amateur</p>
-            <div class="d-flex justify-content-between align-items-center border-top pt-2">
-                <span class="small text-dark fw-semibold">0 Categorías</span>
-                <span class="small text-muted">0 Equipos</span>
-            </div>
-        </div>
-    </div>
-</div>
+<div id='seccion_competencias'></div>
 
 <!-- SECCIÓN 2: Tabla Maestra Unificada con Filtros Avanzados -->
 <div class="border rounded-4 bg-white p-3 shadow-sm">

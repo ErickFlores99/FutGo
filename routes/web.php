@@ -48,6 +48,9 @@ Route::group(["prefix" => "/app", 'middleware' => ['auth', 'revalidate']], funct
     // GRUPO DE RUTAS: COMPETENCIAS
     Route::prefix('competencias')->group(function () {
 
+        Route::get('/mostrar', [CompetenciaController::class, 'mostrar'])
+            ->name('competencias.mostrar');
+
         Route::post('/crear', [CompetenciaController::class, 'crear'])
             ->name('competencias.crear');
 
