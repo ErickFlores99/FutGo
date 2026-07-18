@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->tinyInteger('estatus')->default(1)->comment('0=inactivo, 1=activo, 2=bloqueado, 3=eliminado, 4=pending, 5=archivado, 6=expirado, 7=deshabilitado, 8=pendiente de verificación, 9=verificado, 10=desactivado');
+            $table->tinyInteger('estatus')->default(1)->comment('0 Inactivo,1 Activo,2 Bloqueado,3 Eliminado,4 Pendiente,5 Deshabilitado,6 Desactivado');
             $table->rememberToken();
             $table->timestamps();
         });

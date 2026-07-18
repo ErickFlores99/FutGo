@@ -33,7 +33,7 @@ class UserSeeder extends Seeder
         User::factory()->create([
             'name' => 'FutGo',
             'email' => 'admin@futgo.com',
-            'password' => bcrypt('futgo'), 
+            'password' => bcrypt('admin'), 
             'estatus' => 1, // Activo
             'created_at' => now(),
             'updated_at' => now(),

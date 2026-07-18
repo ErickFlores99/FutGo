@@ -3,24 +3,39 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Competencia extends Model
 {
-    use HasFactory;
+    /**
+     * Tabla asociada al modelo.
+     *
+     * @var string
+     */
+    protected $table = 'competencias';
 
+    /**
+     * Atributos asignables masivamente.
+     *
+     * @var array<int, string>
+     */
     protected $fillable = [
+        'tipo_competencia_id',
+        'administrador_id',
         'nombre',
         'descripcion',
-        'temporada',
-        'tipo_id',
-        'administrador_id',
         'fecha_inicio',
         'fecha_fin',
         'es_nocturna',
-        'estatus'
+        'estatus',
     ];
 
+    /**
+     * Conversión de atributos.
+     *
+     * @var array<string, string>
+     */
     protected $casts = [
         'fecha_inicio' => 'date',
         'fecha_fin'    => 'date',
@@ -28,23 +43,47 @@ class Competencia extends Model
         'estatus'      => 'integer',
     ];
 
-    public function tipo()
+    /**
+     * Tipo de competencia.
+     */
+    public function tipo(): BelongsTo
     {
-        return $this->belongsTo(CompetenciaTipo::class, 'tipo_id');
+        return $this->belongsTo(
+            CompetenciaTipo::class,
+            'tipo_competencia_id'
+        );
     }
 
-    public function administrador()
+    /**
+     * Administrador de la competencia.
+     */
+    public function administrador(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'administrador_id');
+        return $this->belongsTo(
+            User::class,
+            'administrador_id'
+        );
     }
 
-    public function categorias()
+    /**
+     * Días en que se juega la competencia.
+     */
+    public function dias(): HasMany
     {
-        return $this->hasMany(CompetenciaCategoria::class);
+        return $this->hasMany(
+            CompetenciaDia::class,
+            'competencia_id'
+        );
     }
 
-    public function dias()
+    /**
+     * Grupos de la competencia.
+     */
+    public function grupos(): HasMany
     {
-        return $this->hasMany(CompetenciaDia::class);
+        return $this->hasMany(
+            CompetenciaGrupo::class,
+            'competencia_id'
+        );
     }
 }

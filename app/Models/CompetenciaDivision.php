@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class CompetenciaCategoria extends Model
+class CompetenciaDivision extends Model
 {
     /**
      * Tabla asociada al modelo.
      *
      * @var string
      */
-    protected $table = 'competencia_categorias';
+    protected $table = 'competencia_divisiones';
 
     /**
      * Atributos asignables masivamente.
@@ -22,8 +22,6 @@ class CompetenciaCategoria extends Model
     protected $fillable = [
         'nombre',
         'descripcion',
-        'edad_minima',
-        'edad_maxima',
         'estatus',
     ];
 
@@ -33,16 +31,14 @@ class CompetenciaCategoria extends Model
      * @var array<string, string>
      */
     protected $casts = [
-        'edad_minima' => 'integer',
-        'edad_maxima' => 'integer',
         'estatus' => 'integer',
     ];
 
     /**
-     * Una categoría puede pertenecer a muchos grupos de competencia.
+     * Una división puede pertenecer a muchos grupos de competencia.
      */
     public function grupos(): HasMany
     {
-        return $this->hasMany(CompetenciaGrupo::class, 'categoria_id');
+        return $this->hasMany(CompetenciaGrupo::class, 'division_id');
     }
 }

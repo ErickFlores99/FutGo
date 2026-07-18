@@ -2,22 +2,45 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class CompetenciaDia extends Model
 {
-    use HasFactory;
-
+    /**
+     * Tabla asociada al modelo.
+     *
+     * @var string
+     */
     protected $table = 'competencia_dias';
 
+    /**
+     * Atributos asignables masivamente.
+     *
+     * @var array<int, string>
+     */
     protected $fillable = [
         'competencia_id',
         'dia',
     ];
 
-    public function competencia()
+    /**
+     * Conversión de atributos.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'dia' => 'integer',
+    ];
+
+    /**
+     * Competencia a la que pertenece el día.
+     */
+    public function competencia(): BelongsTo
     {
-        return $this->belongsTo(Competencia::class);
+        return $this->belongsTo(
+            Competencia::class,
+            'competencia_id'
+        );
     }
 }

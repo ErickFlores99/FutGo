@@ -1,76 +1,225 @@
 Planificación de Migraciones
 
-# Migración: Usuarios
 
-## Tabla: users
+Migración: Usuarios
 
-    - id
-    - name -> string
-    - email -> string (unique)
-    - email_verified_at -> timestamp (nullable)
-    - password -> string
-    - estatus -> tinyInteger()->default(1)
-    0 Inactivo, 1 Activo, 2 Bloqueado, 3 Eliminado, 4 Pendiente, 5 Archivado, 6 Expirado, 7 Deshabilitado, 8 Pendiente de verificación, 9 Verificado, 10 Desactivado
-    - rememberToken()
-    - timestamps()
+Tabla: users
+- id
+- name -> string
+- email -> string (unique)
+- email_verified_at -> timestamp (nullable)
+- password -> string
+- estatus -> tinyInteger()->default(4)
+    0 Inactivo,1 Activo,2 Bloqueado,3 Eliminado,4 Pendiente,5 Deshabilitado,6 Desactivado
+- rememberToken()
+- timestamps()
 
-## Tabla: roles
-    - id
-    - nombre -> string (unique)
-    - timestamps()
+Tabla: roles
+- id
+- nombre -> string (unique)
+- timestamps()
 
-## Tabla: rol_user
-    - rol_id -> foreignId()->constrained('roles')
-    - user_id -> foreignId()->constrained('users')
-    - timestamps()
+Tabla: rol_user
+- rol_id -> foreignId()->constrained('roles')
+- user_id -> foreignId()->constrained('users')
+- timestamps()
 
 
+Migración: Competencia_Catálogos
 
-# Migración: Competencias
+Tabla: competencia_tipos
+- id
+- nombre -> string (unique)
+- descripcion -> string (nullable)
+- timestamps()
 
-## Tabla: divisiones
-    - id
-    - nombre -> string (unique)
-    - descripcion -> string (nullable)
+Ejemplos: Liga,Torneo,Copa
 
-## Tabla: tipos_competencia
-    - id
-    - nombre -> string (unique)
+Tabla: generos
+- id
+- nombre -> string (unique)
+- descripcion -> string (nullable)
+- estatus -> tinyInteger()->default(1)
+    0 Inactivo,1 Activo
+- timestamps()
 
-## Tabla: competencias
-    - id
-    - nombre -> string
-    - descripcion -> text (nullable)
-    - tipo_id -> foreignId()->constrained('tipos_competencia')
-    - division_id -> foreignId()->constrained('divisiones')
-    - administrador_id -> foreignId()->constrained('users')
-    - fecha_inicio -> date (nullable)
-    - fecha_fin -> date (nullable)
-    - estatus -> tinyInteger()->default(0)
+Ejemplos: Varonil,Femenil,Mixto
+
+Tabla: categorias
+- id
+- nombre -> string (unique)
+- descripcion -> string (nullable)
+- edad_minima -> integer (nullable)
+- edad_maxima -> integer (nullable)
+- estatus -> tinyInteger()->default(1)
+    0 Inactivo,1 Activo
+- timestamps()
+
+Ejemplos: Infantil,Juvenil,Libre, Veteranos
+
+Tabla: divisiones
+- id
+- nombre -> string (unique)
+- descripcion -> string (nullable)
+- estatus -> tinyInteger()->default(1)
+    0 Inactivo,1 Activo
+- timestamps()
+
+Ejemplos: Primera, Segunda, Tercera, Premier
+
+
+Migración: Competencias
+
+Tabla: competencias
+
+Representa el torneo principal.
+- id
+- tipo_competencia_id -> foreignId()->constrained('tipos_competencia')
+- administrador_id -> foreignId()->constrained('users')
+- nombre -> string
+- descripcion -> text (nullable)
+- fecha_inicio -> date
+- fecha_fin -> date
+- es_nocturna -> boolean()->default(false)
+- estatus -> tinyInteger()->default(0)
     0 Pendiente,1 Activa,2 Suspendida,3 Finalizada,4 Cancelada
-    - timestamps()
+- timestamps()
 
+Tabla: competencia_dias
 
-## Tabla: competencia_dia
-    - competencia_id -> foreignId()->constrained('competencias')
-    - dia -> tinyInteger (nullable)
-    1 Lunes, 2 Martes, 3 Miercoles, 4 Jueves, 5 Viernes, 6 Sabado, 7 Domingo
-    - timestamps()
+Días en que se jugará la competencia.
+- id
+- competencia_id
+    -> foreignId()->constrained('competencias')
+- dia -> tinyInteger
+    1 Lunes,2 Martes,3 Miércoles,4 Jueves,5 Viernes,6 Sábado,7 Domingo
+- timestamps()
 
-## Tabla: categorias
-    - id
-    - competencia_id -> foreignId()->constrained('competencias')
-    - nombre -> string
-    - descripcion -> string (nullable)
-    - edad_minima -> integer (nullable)
-    - edad_maxima -> integer (nullable)
-    - estatus -> tinyInteger()->default(1)
-    0 Inactivo, 1 Activo, 2 Bloqueado, 3 Eliminado
-    - timestamps()
+Tabla: competencia_grupos
 
-## Tabla: categorias_competencia
-    - categoria_id -> foreignId()->constrained('categorias')
-    - competencia_id -> foreignId()->constrained('competencias')
-    - timestamps()
+Representa cada combinación de Género + Categoría + División.
+- id
+- competencia_id
+    -> foreignId()->constrained('competencias')
+- genero_id
+    -> foreignId()->constrained('generos')
+- categoria_id
+    -> foreignId()->constrained('categorias')
+- division_id
+    -> foreignId()->constrained('divisiones')
+- estatus -> tinyInteger()->default(1)
+    0 Inactivo,1 Activo,2 Finalizado
+- timestamps()
 
-Recomendadas: equipos, jugadores, cuerpos_tecnicos, estadios, arbitros, temporadas, jornadas, partidos, alineaciones, eventos_partido, tabla_posiciones, sanciones, inscripciones_equipos y documentos_equipos.
+Ejemplo de generación automática
+
+Competencia creada
+    Liga Municipal 2027
+        Selección
+            Géneros
+                ✓ Varonil
+                ✓ Femenil
+
+            Categorías
+                ✓ Libre
+                ✓ Juvenil
+
+            Divisiones
+                ✓ Primera
+                ✓ Segunda
+
+Laravel generará automáticamente
+
+    CompetenciaGrupo
+
+        Liga Municipal
+            Varonil
+            Libre
+            Primera
+
+        Liga Municipal
+            Varonil
+            Libre
+            Segunda
+
+        Liga Municipal
+            Varonil
+            Juvenil
+            Primera
+
+        Liga Municipal
+            Varonil
+            Juvenil
+            Segunda
+
+        Liga Municipal
+            Femenil
+            Libre
+            Primera
+
+        Liga Municipal
+            Femenil
+            Libre
+            Segunda
+
+        Liga Municipal    
+            Femenil
+            Juvenil
+            Primera
+
+        Liga Municipal    
+            Femenil
+            Juvenil
+            Segunda
+
+Cada uno de estos registros funcionará como un torneo independiente dentro de la misma competencia.
+
+Estructura futura del sistema
+
+Toda la operación del sistema dependerá de competencia_grupos.
+
+Competencias
+        │
+        │
+        ▼
+CompetenciaGrupos
+        │
+        ├── Equipos
+        ├── Jugadores
+        ├── Cuerpos Técnicos
+        ├── Jornadas
+        ├── Partidos
+        ├── Tabla de Posiciones
+        ├── Goleadores
+        ├── Estadísticas
+        ├── Sanciones
+        ├── Inscripciones
+        └── Roles de Competencia
+
+Migraciones recomendadas (orden de creación)
+01_users
+02_roles
+03_rol_user
+04_competencia_tipos
+05_generos
+06_categorias
+07_divisiones
+08_competencias
+09_competencia_dias
+10_competencia_grupos
+
+11_equipos
+12_jugadores
+13_cuerpos_tecnicos
+14_estadios
+15_arbitros
+16_temporadas
+17_jornadas
+18_partidos
+19_alineaciones
+20_eventos_partido
+21_tabla_posiciones
+22_goleadores
+23_sanciones
+24_inscripciones_equipos
+25_documentos_equipos

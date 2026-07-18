@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class CompetenciaTipo extends Model
+class CompetenciaGenero extends Model
 {
     /**
      * Tabla asociada al modelo.
      *
      * @var string
      */
-    protected $table = 'competencia_tipos';
+    protected $table = 'competencia_generos';
 
     /**
      * Atributos asignables masivamente.
@@ -22,13 +22,14 @@ class CompetenciaTipo extends Model
     protected $fillable = [
         'nombre',
         'descripcion',
+        'estatus',
     ];
 
     /**
-     * Una competencia de tipo puede pertenecer a muchas competencias.
+     * Un género puede pertenecer a muchos grupos de competencia.
      */
-    public function competencias(): HasMany
+    public function grupos(): HasMany
     {
-        return $this->hasMany(Competencia::class, 'tipo_competencia_id');
+        return $this->hasMany(CompetenciaGrupo::class, 'genero_id');
     }
 }
