@@ -134,23 +134,5 @@
 
         </div>
 
-        <!-- Usuario -->
-        <div class="border-top p-3">
-            <div class="d-flex align-items-center">
-                <div>
-                    <i class="ri-account-circle-fill fs-2 text-success"></i>
-                </div>
-
-                <div class="ms-2">
-                    <div class="fw-semibold">
-                        Erick Flores
-                    </div>
-                    <small class="text-muted">
-                        Administrador
-                    </small>
-                </div>
-            </div>
-        </div>
-
     </div>
 </div>

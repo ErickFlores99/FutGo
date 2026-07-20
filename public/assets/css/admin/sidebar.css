@@ -65,3 +65,35 @@
     transition:.25s;
 
 }
+
+/* Sidebar escritorio */
+@media (min-width: 992px){
+
+    #sidebarMenu{
+
+        position: sticky;
+
+        top: 1rem;
+
+        height: calc(100vh - 2rem);
+
+        visibility: visible !important;
+
+        transform: none !important;
+
+    }
+
+}
+
+
+/* Sidebar móvil */
+
+@media (max-width: 991.98px){
+
+    #sidebarMenu{
+
+        width:260px;
+
+    }
+
+}
