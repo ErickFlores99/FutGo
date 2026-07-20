@@ -16,7 +16,7 @@
             </div>
 
             <!-- Formulario -->
-            <form id="formCompetencia" method="POST">
+            <form id="formCrearCompetencia" method="POST">
                 @csrf
                 <div class="modal-body">
                     <div class="row g-3">
