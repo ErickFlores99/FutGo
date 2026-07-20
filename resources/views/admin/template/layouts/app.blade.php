@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administrador FutGo | Home</title>
 
+    <!-- Sidebar -->
+    <link rel="stylesheet" href="{{ asset('assets/css/admin/sidebar.css') }}">
+
     <!-- Bootstrap -->
     <link rel="stylesheet" href="{{ asset('assets/libs/Bootstrap-5.3/css/bootstrap.min.css') }}">
 
@@ -48,6 +51,9 @@
         </div>
     </div>
 
+    <!-- Sidebar -->
+    <script src="{{ asset('assets/js/admin/sidebar.js') }}"></script>
+    
     <!-- JQuery -->
     <script src="{{ asset('assets/libs/JQuery-4.0.0/jquery-4.0.0.min.js') }}"></script>
 

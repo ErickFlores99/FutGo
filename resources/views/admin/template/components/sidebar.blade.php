@@ -1,116 +1,156 @@
-<div class="offcanvas-lg offcanvas-start flex-shrink-0 p-3 mt-lg-3 ms-lg-3 mb-lg-3 rounded-4 shadow-sm bg-white"
+<div
+    class="offcanvas offcanvas-lg offcanvas-start flex-shrink-0 mt-lg-3 ms-lg-3 mb-lg-3 rounded-4 shadow-sm bg-white"
     tabindex="-1"
     id="sidebarMenu"
     aria-labelledby="sidebarMenuLabel"
-    style="width: 220px;">
+    style="width:260px;"
+>
 
-    <!-- Encabezado (Solo móvil) -->
+    <!-- Header móvil -->
     <div class="offcanvas-header d-lg-none">
-        <h5 class="offcanvas-title text-success fw-bold" id="sidebarMenuLabel">
+
+        <h5 class="offcanvas-title fw-bold text-success">
             FutGo
         </h5>
 
-        <button type="button"
-                class="btn-close"
-                data-bs-dismiss="offcanvas"
-                data-bs-target="#sidebarMenu"
-                aria-label="Close">
+        <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="offcanvas">
         </button>
+
     </div>
 
-    <!-- Contenido -->
-    <div class="offcanvas-body d-flex flex-column p-0">
+    <!-- CONTENEDOR -->
+    <div class="d-flex flex-column h-100">
+        
+        <!-- Logo escritorio -->
+        <div class="d-none d-lg-flex justify-content-center align-items-center p-3 border-bottom">
+            <a href="#" class="text-decoration-none">
+                <span class="fs-3 fw-bold text-success">
+                    FutGo
+                </span>
+            </a>
+        </div>
 
-        <a href="#" class="d-none d-lg-flex align-items-center justify-content-center mb-4 text-decoration-none">
-            <span class="fs-4 fw-bold text-success">FutGo</span>
-        </a>
+        <!-- MENU -->
+        <div class="flex-grow-1 overflow-auto p-3" id="sidebarScroll">
+            <ul class="nav flex-column">
+                <!-- Dashboard -->
+                <li class="nav-item mb-2">
+                    <a href="#" class="nav-link active bg-success rounded-3 text-white">
+                        <i class="ri-dashboard-line me-2"></i>
+                        Dashboard
+                    </a>
+                </li>
 
-        <ul class="nav nav-pills flex-column mb-auto">
+                <!-- Competencias -->
+                <li class="mt-3">
+                    <button
+                        class="btn w-100 text-start sidebar-toggle"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#menuCompetencias"
+                    >
+                        <i class="ri-trophy-line me-2"></i>
+                        Competencias
+                        <i class="ri-arrow-down-s-line float-end"></i>
+                    </button>
+                    <div class="collapse show" id="menuCompetencias">
+                        <ul class="nav flex-column ms-3 mt-2">
+                            <li>
+                                <a href="#" class="nav-link">
+                                    Todas las Competencias
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link">
+                                    Nueva Competencia
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
 
-            <li class="nav-item mb-1">
-                <a href="#" class="nav-link active bg-success text-white rounded-3">
-                    <i class="bi bi-speedometer2 me-2"></i>
-                    Dashboard
-                </a>
-            </li>
+                <!-- Gestión -->
+                <li class="mt-3">
+                    <button
+                        class="btn w-100 text-start sidebar-toggle"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#menuGestion"
+                    >
+                        <i class="ri-team-line me-2"></i>
+                        Gestión
+                        <i class="ri-arrow-down-s-line float-end"></i>
+                    </button>
+                    <div class="collapse" id="menuGestion">
+                        <ul class="nav flex-column ms-3 mt-2">
+                            <li><a href="#" class="nav-link">Equipos</a></li>
+                            <li><a href="#" class="nav-link">Jugadores</a></li>
+                            <li><a href="#" class="nav-link">Árbitros</a></li>
+                            <li><a href="#" class="nav-link">Canchas</a></li>
+                        </ul>
+                    </div>
+                </li>
 
-            <hr>
+                <!-- Catálogos -->
+                <li class="mt-3">
+                    <button
+                        class="btn w-100 text-start sidebar-toggle"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#menuCatalogos"
+                    >
+                        <i class="ri-stack-line me-2"></i>
+                        Catálogos
+                        <i class="ri-arrow-down-s-line float-end"></i>
+                    </button>
 
-            <small class="text-muted px-3 mb-2 text-uppercase fw-semibold">
-                Competencia
-            </small>
+                    <div class="collapse" id="menuCatalogos">
+                        <ul class="nav flex-column ms-3 mt-2">
+                            <li><a href="#" class="nav-link">Categorías</a></li>
+                            <li><a href="#" class="nav-link">Divisiones</a></li>
+                            <li><a href="#" class="nav-link">Tipos</a></li>
+                            <li><a href="#" class="nav-link">Días</a></li>
+                        </ul>
+                    </div>
+                </li>
 
-            <li>
-                <a href="#" class="nav-link text-dark">
-                    <i class="bi bi-calendar-event me-2"></i>
-                    Jornadas
-                </a>
-            </li>
+                <!-- Reportes -->
+                <li class="mt-3">
+                    <a href="#" class="nav-link">
+                        <i class="ri-bar-chart-box-line me-2"></i>
+                        Reportes
+                    </a>
+                </li>
 
-            <li>
-                <a href="#" class="nav-link text-dark">
-                    <i class="bi bi-trophy me-2"></i>
-                    Partidos
-                </a>
-            </li>
+                <!-- Sistema -->
+                <li class="mt-3">
+                    <a href="#" class="nav-link">
+                        <i class="ri-settings-3-line me-2"></i>
+                        Configuración
+                    </a>
+                </li>
 
-            <li>
-                <a href="#" class="nav-link text-dark">
-                    <i class="bi bi-table me-2"></i>
-                    Tabla General
-                </a>
-            </li>
+            </ul>
 
-            <hr>
+        </div>
 
-            <small class="text-muted px-3 mb-2 text-uppercase fw-semibold">
-                Administración
-            </small>
+        <!-- Usuario -->
+        <div class="border-top p-3">
+            <div class="d-flex align-items-center">
+                <div>
+                    <i class="ri-account-circle-fill fs-2 text-success"></i>
+                </div>
 
-            <li>
-                <a href="#" class="nav-link text-dark">
-                    <i class="bi bi-shield-fill me-2"></i>
-                    Equipos
-                </a>
-            </li>
-
-            <li>
-                <a href="#" class="nav-link text-dark">
-                    <i class="bi bi-person-badge me-2"></i>
-                    Jugadores
-                </a>
-            </li>
-
-            <li>
-                <a href="#" class="nav-link text-dark">
-                    <i class="bi bi-person-workspace me-2"></i>
-                    Árbitros
-                </a>
-            </li>
-
-            <li>
-                <a href="#" class="nav-link text-dark">
-                    <i class="bi bi-geo-alt me-2"></i>
-                    Canchas
-                </a>
-            </li>
-
-            <hr>
-
-            <small class="text-muted px-3 mb-2 text-uppercase fw-semibold">
-                Configuración
-            </small>
-
-            <li>
-                <a href="#" class="nav-link text-dark">
-                    <i class="bi bi-gear me-2"></i>
-                    Configuración
-                </a>
-            </li>
-
-        </ul>
-
-        <hr>
+                <div class="ms-2">
+                    <div class="fw-semibold">
+                        Erick Flores
+                    </div>
+                    <small class="text-muted">
+                        Administrador
+                    </small>
+                </div>
+            </div>
+        </div>
 
     </div>
 </div>

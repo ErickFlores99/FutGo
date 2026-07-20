@@ -8,135 +8,491 @@
 
 @include('admin.template.components.modals.crear_competencia')
 
-<!-- Cabecera con título y acción global -->
-<div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-3 mb-4">
+<!-- ===========================
+CABECERA
+============================ -->
+<div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-center gap-3 mb-4">
+
     <div>
-        <h4 class="fw-bold text-dark mb-1">Panel General de Competencias</h4>
-        <p class="text-muted small mb-0">Monitoreo global y administración rápida de ligas y categorías en FutGo.</p>
+        <h3 class="fw-bold mb-1">
+            Panel General
+        </h3>
+
+        <p class="text-muted mb-0">
+            Bienvenido al panel administrativo de FutGo.
+        </p>
     </div>
-    <div>
-        <button class="btn btn-success fw-bold px-3 btn-sm d-flex align-items-center gap-1 rounded-4" data-bs-toggle="modal" data-bs-target="#crearCompetencia">
-            <i class="ri-add-circle-line"></i>Nueva Competencia
-        </button>
-    </div>
+
+    <button
+        class="btn btn-success rounded-4 px-4"
+        data-bs-toggle="modal"
+        data-bs-target="#crearCompetencia">
+
+        <i class="ri-add-circle-line me-1"></i>
+
+        Nueva Competencia
+
+    </button>
+
 </div>
 
-<div id='seccion_competencias'></div>
+<!-- ===========================
+RESUMEN GENERAL
+============================ -->
 
-<!-- SECCIÓN 2: Tabla Maestra Unificada con Filtros Avanzados -->
-<div class="border rounded-4 bg-white p-3 shadow-sm">
-    
-    <!-- Barra de Herramientas de la Tabla (Filtros rápidos) -->
-    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-3 pb-3 border-bottom">
-        <div class="d-flex align-items-center gap-2 flex-wrap">
-            <span class="small text-muted fw-bold text-uppercase">Mostrar:</span>
-            <button class="btn btn-sm btn-success rounded-pill px-3 fw-semibold">Todas</button>
-            <button class="btn btn-sm btn-light border rounded-pill px-3">Solo Activas</button>
-            <button class="btn btn-sm btn-light border rounded-pill px-3">Por Configurar</button>
+<div class="row g-3 mb-4">
+
+    <div class="col-sm-6 col-xl-3">
+
+        <div class="card border-0 shadow-sm rounded-4">
+
+            <div class="card-body">
+
+                <div class="d-flex justify-content-between">
+
+                    <div>
+
+                        <small class="text-muted">
+                            Competencias
+                        </small>
+
+                        <h2 class="fw-bold mb-0">
+                            5
+                        </h2>
+
+                    </div>
+
+                    <div class="fs-2 text-success">
+                        <i class="ri-trophy-line"></i>
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
-        <div class="text-muted small">
-            Mostrando <strong>6</strong> categorías distribuidas en todas las competencias
-        </div>
+
     </div>
 
-    <!-- Tabla Responsiva Completa -->
+    <div class="col-sm-6 col-xl-3">
+
+        <div class="card border-0 shadow-sm rounded-4">
+
+            <div class="card-body">
+
+                <div class="d-flex justify-content-between">
+
+                    <div>
+
+                        <small class="text-muted">
+                            Equipos
+                        </small>
+
+                        <h2 class="fw-bold mb-0">
+                            42
+                        </h2>
+
+                    </div>
+
+                    <div class="fs-2 text-primary">
+                        <i class="ri-team-line"></i>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-sm-6 col-xl-3">
+
+        <div class="card border-0 shadow-sm rounded-4">
+
+            <div class="card-body">
+
+                <div class="d-flex justify-content-between">
+
+                    <div>
+
+                        <small class="text-muted">
+                            Partidos
+                        </small>
+
+                        <h2 class="fw-bold mb-0">
+                            108
+                        </h2>
+
+                    </div>
+
+                    <div class="fs-2 text-warning">
+                        <i class="ri-football-line"></i>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-sm-6 col-xl-3">
+
+        <div class="card border-0 shadow-sm rounded-4">
+
+            <div class="card-body">
+
+                <div class="d-flex justify-content-between">
+
+                    <div>
+
+                        <small class="text-muted">
+                            Jornadas
+                        </small>
+
+                        <h2 class="fw-bold mb-0">
+                            18
+                        </h2>
+
+                    </div>
+
+                    <div class="fs-2 text-danger">
+                        <i class="ri-calendar-event-line"></i>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ===========================
+COMPETENCIAS
+============================ -->
+
+<div class="mb-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+
+        <div>
+
+            <h5 class="fw-bold mb-0">
+
+                Mis Competencias
+
+            </h5>
+
+            <small class="text-muted">
+
+                Selecciona una competencia para administrarla.
+
+            </small>
+
+        </div>
+
+    </div>
+
+    <div id="seccion_competencias"></div>
+
+</div>
+
+<!-- ===========================
+SECCIÓN INFERIOR
+============================ -->
+
+<div class="row g-4">
+
+    <!-- Acciones rápidas -->
+
+    <div class="col-lg-4">
+
+        <div class="card shadow-sm border-0 rounded-4 h-100">
+
+            <div class="card-header bg-white">
+
+                <h6 class="fw-bold mb-0">
+
+                    Acciones rápidas
+
+                </h6>
+
+            </div>
+
+            <div class="card-body">
+
+                <div class="d-grid gap-2">
+
+                    <button class="btn btn-outline-success">
+                        <i class="ri-team-line me-2"></i>
+                        Registrar Equipo
+                    </button>
+
+                    <button class="btn btn-outline-primary">
+                        <i class="ri-calendar-check-line me-2"></i>
+                        Crear Jornada
+                    </button>
+
+                    <button class="btn btn-outline-warning">
+                        <i class="ri-calendar-line me-2"></i>
+                        Generar Calendario
+                    </button>
+
+                    <button class="btn btn-outline-dark">
+                        <i class="ri-settings-3-line me-2"></i>
+                        Configuración General
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Actividad -->
+
+    <div class="col-lg-4">
+
+        <div class="card shadow-sm border-0 rounded-4 h-100">
+
+            <div class="card-header bg-white">
+
+                <h6 class="fw-bold mb-0">
+
+                    Actividad Reciente
+
+                </h6>
+
+            </div>
+
+            <div class="card-body">
+
+                <ul class="list-group list-group-flush">
+
+                    <li class="list-group-item px-0">
+
+                        <strong>Liga Premier</strong><br>
+
+                        <small class="text-muted">
+                            Competencia creada hace 10 minutos.
+                        </small>
+
+                    </li>
+
+                    <li class="list-group-item px-0">
+
+                        <strong>Atlas FC</strong><br>
+
+                        <small class="text-muted">
+                            Equipo registrado correctamente.
+                        </small>
+
+                    </li>
+
+                    <li class="list-group-item px-0">
+
+                        <strong>Jornada 1</strong><br>
+
+                        <small class="text-muted">
+                            Calendario generado.
+                        </small>
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Pendientes -->
+
+    <div class="col-lg-4">
+
+        <div class="card shadow-sm border-0 rounded-4 h-100">
+
+            <div class="card-header bg-white">
+
+                <h6 class="fw-bold mb-0">
+
+                    Competencias por configurar
+
+                </h6>
+
+            </div>
+
+            <div class="card-body">
+
+                <div class="alert alert-warning">
+
+                    <strong>Liga Infantil</strong>
+
+                    <br>
+
+                    Falta registrar equipos.
+
+                </div>
+
+                <div class="alert alert-info">
+
+                    <strong>Copa Verano</strong>
+
+                    <br>
+
+                    Aún no tiene jornadas.
+
+                </div>
+
+                <div class="alert alert-danger">
+
+                    <strong>Liga Empresarial</strong>
+
+                    <br>
+
+                    Pendiente generar calendario.
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ===========================
+TABLA GENERAL
+============================ -->
+
+<div class="card border-0 shadow-sm rounded-4 mt-4">
+
+    <div class="card-header bg-white d-flex justify-content-between align-items-center">
+
+        <div>
+
+            <h5 class="fw-bold mb-0">
+
+                Todas las Competencias
+
+            </h5>
+
+            <small class="text-muted">
+
+                Consulta rápida de las competencias registradas.
+
+            </small>
+
+        </div>
+
+    </div>
+
     <div class="table-responsive">
-        <table class="table align-middle table-hover mb-0">
-            <thead class="table-light text-secondary small">
+
+        <table class="table align-middle mb-0">
+
+            <thead class="table-light">
+
                 <tr>
-                    <th scope="col" class="ps-3 py-3">Liga Origen</th>
-                    <th scope="col" class="py-3">Categoría / Subdivisión</th>
-                    <th scope="col" class="py-3">Formato / Reglas</th>
-                    <th scope="col" class="py-3 text-center">Equipos</th>
-                    <th scope="col" class="py-3 text-end pe-3">Acciones</th>
+
+                    <th>Competencia</th>
+
+                    <th>Categoría</th>
+
+                    <th>Estado</th>
+
+                    <th>Equipos</th>
+
+                    <th>Inicio</th>
+
+                    <th class="text-end">Acciones</th>
+
                 </tr>
+
             </thead>
-            <tbody class="small">
-                
-                <!-- Registro 1 -->
+
+            <tbody>
+
                 <tr>
-                    <td class="ps-3 py-3">
-                        <span class="badge text-bg-success rounded-pill px-2">Liga Premier</span>
+
+                    <td>Liga Premier</td>
+
+                    <td>Libre</td>
+
+                    <td>
+
+                        <span class="badge bg-success">
+
+                            Activa
+
+                        </span>
+
                     </td>
-                    <td class="py-3">
-                        <span class="fw-bold text-dark d-block">Primera División Masculina</span>
-                        <span class="text-muted text-xs">ID: #LP-01</span>
+
+                    <td>16</td>
+
+                    <td>10 Ago 2026</td>
+
+                    <td class="text-end">
+
+                        <button class="btn btn-sm btn-outline-success">
+
+                            Administrar
+
+                        </button>
+
                     </td>
-                    <td class="py-3 text-muted">Fútbol 11 • Tiempos de 45 min</td>
-                    <td class="text-center py-3"><span class="badge text-bg-dark rounded px-2">16</span></td>
-                    <td class="text-end pe-3 py-3">
-                        <div class="d-flex gap-2 justify-content-end">
-                            <a href="#" class="btn btn-sm btn-outline-success px-2 py-1" title="Gestionar Equipos">⚽ Equipos</a>
-                            <button class="btn btn-sm btn-light border px-2 py-1" title="Editar"><span class="text-primary">✏️</span></button>
-                            <button class="btn btn-sm btn-light border px-2 py-1" title="Eliminar"><span class="text-danger">🗑️</span></button>
-                        </div>
-                    </td>
+
                 </tr>
 
-                <!-- Registro 2 -->
                 <tr>
-                    <td class="ps-3 py-3">
-                        <span class="badge text-bg-success rounded-pill px-2">Liga Premier</span>
-                    </td>
-                    <td class="py-3">
-                        <span class="fw-bold text-dark d-block">Sub-20 Elite</span>
-                        <span class="text-muted text-xs">ID: #LP-02</span>
-                    </td>
-                    <td class="py-3 text-muted">Fútbol 11 • Límite de edad año 2006+</td>
-                    <td class="text-center py-3"><span class="badge text-bg-dark rounded px-2">12</span></td>
-                    <td class="text-end pe-3 py-3">
-                        <div class="d-flex gap-2 justify-content-end">
-                            <a href="#" class="btn btn-sm btn-outline-success px-2 py-1">⚽ Equipos</a>
-                            <button class="btn btn-sm btn-light border px-2 py-1">✏️</button>
-                            <button class="btn btn-sm btn-light border px-2 py-1">🗑️</button>
-                        </div>
-                    </td>
-                </tr>
 
-                <!-- Registro 3 -->
-                <tr>
-                    <td class="ps-3 py-3">
-                        <span class="badge text-bg-secondary rounded-pill px-2">Liga Regional</span>
-                    </td>
-                    <td class="py-3">
-                        <span class="fw-bold text-dark d-block">Femenil Libre</span>
-                        <span class="text-muted text-xs">ID: #LR-01</span>
-                    </td>
-                    <td class="py-3 text-muted">Fútbol 7 • Tiempos de 25 min</td>
-                    <td class="text-center py-3"><span class="badge text-bg-dark rounded px-2">8</span></td>
-                    <td class="text-end pe-3 py-3">
-                        <div class="d-flex gap-2 justify-content-end">
-                            <a href="#" class="btn btn-sm btn-outline-success px-2 py-1">⚽ Equipos</a>
-                            <button class="btn btn-sm btn-light border px-2 py-1">✏️</button>
-                            <button class="btn btn-sm btn-light border px-2 py-1">🗑️</button>
-                        </div>
-                    </td>
-                </tr>
+                    <td>Copa Verano</td>
 
-                <!-- Registro 4 -->
-                <tr>
-                    <td class="ps-3 py-3">
-                        <span class="badge text-bg-dark rounded-pill px-2">Copa Uni</span>
+                    <td>Juvenil</td>
+
+                    <td>
+
+                        <span class="badge bg-warning text-dark">
+
+                            Configuración
+
+                        </span>
+
                     </td>
-                    <td class="py-3">
-                        <span class="fw-bold text-dark d-block">Inter-Prepas Masculino</span>
-                        <span class="text-muted text-xs">ID: #CU-01</span>
+
+                    <td>8</td>
+
+                    <td>20 Ago 2026</td>
+
+                    <td class="text-end">
+
+                        <button class="btn btn-sm btn-outline-success">
+
+                            Administrar
+
+                        </button>
+
                     </td>
-                    <td class="py-3 text-muted">Fútbol Rapido • Con Paredes</td>
-                    <td class="text-center py-3"><span class="badge text-bg-dark rounded px-2">8</span></td>
-                    <td class="text-end pe-3 py-3">
-                        <div class="d-flex gap-2 justify-content-end">
-                            <a href="#" class="btn btn-sm btn-outline-success px-2 py-1">⚽ Equipos</a>
-                            <button class="btn btn-sm btn-light border px-2 py-1">✏️</button>
-                            <button class="btn btn-sm btn-light border px-2 py-1">🗑️</button>
-                        </div>
-                    </td>
+
                 </tr>
 
             </tbody>
+
         </table>
+
     </div>
 
 </div>
-    
-@endsection 
+
+@endsection
+
