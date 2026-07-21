@@ -26,7 +26,7 @@
         
         <!-- Logo escritorio -->
         <div class="d-none d-lg-flex justify-content-center align-items-center p-3 border-bottom">
-            <a href="#" class="text-decoration-none">
+            <a href="{{ route('appIndex') }}" class="text-decoration-none">
                 <span class="fs-3 fw-bold text-success">
                     FutGo
                 </span>
@@ -38,7 +38,8 @@
             <ul class="nav flex-column">
                 <!-- Dashboard -->
                 <li class="nav-item mb-2">
-                    <a href="#" class="nav-link active bg-success rounded-3 text-white">
+                    <a href="{{ route('appIndex') }}"
+                        class="nav-link @active('appIndex')">
                         <i class="ri-dashboard-line me-2"></i>
                         Dashboard
                     </a>
@@ -58,13 +59,9 @@
                     <div class="collapse show" id="menuCompetencias">
                         <ul class="nav flex-column ms-3 mt-2">
                             <li>
-                                <a href="#" class="nav-link">
+                                <a href="{{ route('competencias.index') }}"
+                                class="nav-link @active('competencias.*')">
                                     Todas las Competencias
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="nav-link">
-                                    Nueva Competencia
                                 </a>
                             </li>
                         </ul>

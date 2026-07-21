@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +20,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Blade::directive('active', function ($expression) {
+            return "<?php echo request()->routeIs($expression)
+                ? 'active bg-success rounded-3 text-white'
+                : ''; ?>";
+        });
     }
 }

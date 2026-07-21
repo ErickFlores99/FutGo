@@ -5,6 +5,10 @@ namespace App\Services\Admin\Competencia;
 use App\Models\Competencia\Competencia;
 use App\Models\Competencia\CompetenciaDia;
 use App\Models\Competencia\CompetenciaGrupo;
+use App\Models\Competencia\CompetenciaTipo;
+use App\Models\Competencia\CompetenciaCategoria;
+use App\Models\Competencia\CompetenciaDivision;
+use App\Models\Competencia\CompetenciaGenero;
 use Illuminate\Support\Facades\DB;
 
 class CompetenciaService
@@ -81,7 +85,7 @@ class CompetenciaService
                             'genero_id'      => $generoId,
                             'categoria_id'   => $categoriaId,
                             'division_id'    => $divisionId,
-                            'estatus'        => 1,
+                            'estatus'        => 0,
                         ]);
 
                     }
@@ -92,5 +96,37 @@ class CompetenciaService
 
             return $competencia;
         });
+    }
+
+    public function index(): array
+    {
+        return [
+            'competencias' => Competencia::with([
+                'dias',
+                'grupos',
+                'tipo',
+            ])->latest()->get(),
+
+            'tiposCompetencia' => CompetenciaTipo::orderBy('nombre')->get(),
+
+            'categorias' => CompetenciaCategoria::orderBy('nombre')->get(),
+
+            'divisiones' => CompetenciaDivision::orderBy('nombre')->get(),
+
+            'generos' => CompetenciaGenero::orderBy('nombre')->get(),
+        ];
+    }
+
+    public function detalle(int $id): array
+    {
+        $competencia = Competencia::with([
+            'dias',
+            'grupos',
+            'tipo',
+        ])->findOrFail($id);
+
+        return [
+            'competencia' => $competencia,
+        ];
     }
 }

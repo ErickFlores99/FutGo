@@ -7,7 +7,7 @@
 
 @section('content')
 
-@include('admin.template.components.modals.crear_competencia')
+@include('admin.competencia.modals.crear_competencia')
 
 <!-- ===========================
 CABECERA

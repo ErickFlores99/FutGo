@@ -30,7 +30,7 @@ return new class extends Migration
 
             $table->tinyInteger('estatus')
                 ->default(0)
-                ->comment('0 Pendiente,1 Activa,2 Suspendida,3 Finalizada,4 Cancelada');
+                ->comment('0 Configuración,1 Activa,2 Suspendida,3 Finalizada,4 Cancelada');
 
             $table->timestamps();
         });
@@ -65,8 +65,8 @@ return new class extends Migration
                 ->constrained('competencia_divisiones');
 
             $table->tinyInteger('estatus')
-                ->default(1)
-                ->comment('0 Inactivo,1 Activo,2 Finalizado');
+                ->default(0)
+                ->comment('0 Configuración, 1 Activo,2 Suspendido, 3 Finalizado');
 
             $table->timestamps();
 

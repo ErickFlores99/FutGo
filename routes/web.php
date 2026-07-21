@@ -4,7 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 
 use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Admin\CompetenciaController;
+use App\Http\Controllers\Admin\Competencia\CompetenciaController;
+use App\Http\Controllers\Admin\Competencia\CompetenciaGrupoController;
 
 // Vista pública de inicio
 Route::get('/', function () {
@@ -53,6 +54,15 @@ Route::group(["prefix" => "/app", 'middleware' => ['auth', 'revalidate']], funct
 
         Route::post('/crear', [CompetenciaController::class, 'crear'])
             ->name('competencias.crear');
+
+        Route::get('/', [CompetenciaController::class, 'index'])
+            ->name('competencias.index');
+        
+        Route::get('/{competencia}', [CompetenciaController::class, 'detalle'])
+            ->name('competencias.detalle');
+
+         Route::get('/{competencia}/grupos/{grupo}',[CompetenciaGrupoController::class,'detalle'])
+            ->name('grupos.detalle');
 
     });
 

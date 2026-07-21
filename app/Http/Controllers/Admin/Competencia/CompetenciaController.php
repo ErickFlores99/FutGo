@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Competencia;
 
 use App\Http\Controllers\Controller;
 
@@ -16,7 +16,7 @@ class CompetenciaController extends Controller
      * Laravel inyecta automáticamente el Service.
      */
     public function __construct(
-        private CompetenciaService $service
+        private CompetenciaService $competenciaService
     ){}
 
     /**
@@ -24,10 +24,10 @@ class CompetenciaController extends Controller
      */
     public function mostrar()
     {
-        $competencias = $this->service->listar();
+        $competencias = $this->competenciaService->listar();
 
         return view(
-            'admin.template.components.secciones.lista_competencias',
+            'admin.competencia.secciones.lista_competencias',
             compact('competencias')
         );
     }
@@ -37,7 +37,7 @@ class CompetenciaController extends Controller
      */
     public function crear(CrearCompetenciaRequest $request)
     {
-        $competencia = $this->service->crear(
+        $this->competenciaService->crear(
             $request->validated()
         );
         
@@ -49,5 +49,27 @@ class CompetenciaController extends Controller
             'message' => 'Competencia registrada correctamente.'
 
         ]);
+    }
+
+    /**
+     * Redirigir a vista con el listado de competencias.
+     */
+    public function index()
+    {
+        return view(
+            'admin.competencia.index',
+            $this->competenciaService->index()
+        );
+    }
+
+    /**
+     * Redirigir a vista detalle de una competencia.
+     */
+    public function detalle(int $id)
+    {
+        return view(
+            'admin.competencia.detalle',
+            $this->competenciaService->detalle($id)
+        );
     }
 }

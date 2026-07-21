@@ -36,7 +36,7 @@
                         @switch($competencia->estatus)
 
                             @case(0)
-                                Pendiente
+                                Configuración
                                 @break
 
                             @case(1)
@@ -111,9 +111,9 @@
                             {{ $competencia->grupos->count() }}
                             grupos
                         </span>
-                        <a href="#"
+                        <a href="{{ route('competencias.detalle', [$competencia->id]) }}"
                            class="btn btn-sm btn-outline-success rounded-pill">
-                            Ver detalle
+                            Administrar
                         </a>
                     </div>
                 </div>
