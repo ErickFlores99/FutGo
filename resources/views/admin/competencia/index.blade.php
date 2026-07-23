@@ -1,5 +1,7 @@
 @extends('admin.template.layouts.app')
 
+@section('title', 'Competencias')
+
 @section('js')
     <script src="{{ asset('admin/competencia/crear.js') }}"></script>
     <script src="{{ asset('admin/competencia/lista.js') }}"></script>
@@ -15,12 +17,10 @@ BREADCRUMB
 <nav aria-label="breadcrumb" class="mb-3">
     <ol class="breadcrumb mb-0">
         <li class="breadcrumb-item">
-            <a href="{{ route('appIndex') }}" class="text-decoration-none">
+            <a href="{{ route('appIndex') }}" 
+            class="text-decoration-none text-reset">
                 <i class="ri-home-4-line me-1"></i> Inicio
             </a>
-        </li>
-        <li class="breadcrumb-item">
-            Administración
         </li>
         <li class="breadcrumb-item active" aria-current="page">
             Competencias

@@ -1,5 +1,6 @@
 @extends('admin.template.layouts.app')
 
+@section('title', $competencia->tipo->nombre . ' ' . $competencia->nombre . ' ' . $grupo->categoria->nombre . ' ' . $grupo->genero->nombre )
 
 @section('js')
 
@@ -14,14 +15,15 @@ BREADCRUMB
     <ol class="breadcrumb mb-0">
         <li class="breadcrumb-item">
             <a href="{{ route('appIndex') }}"
-               class="text-decoration-none">
+               class="text-decoration-none text-reset">
                 <i class="ri-home-4-line me-1"></i>
                 Inicio
             </a>
         </li>
 
         <li class="breadcrumb-item">
-            <a href="{{ route('competencias.index') }}">
+            <a href="{{ route('competencias.index') }}"
+            class="text-decoration-none text-reset">
                 Competencias
             </a>
         </li>
@@ -30,7 +32,8 @@ BREADCRUMB
             <a href="{{ route(
                 'competencias.detalle',
                 $competencia
-            ) }}">
+            ) }}"
+            class="text-decoration-none text-reset">
                 {{ $competencia->tipo->nombre }} {{ $competencia->nombre }}
             </a>
         </li>

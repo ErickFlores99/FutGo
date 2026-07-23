@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administrador FutGo | Home</title>
+    <title>@yield('title', 404)</title>
 
     <!-- Sidebar -->
     <link rel="stylesheet" href="{{ asset('assets/css/admin/sidebar.css') }}">

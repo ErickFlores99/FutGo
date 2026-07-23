@@ -1,5 +1,7 @@
 @extends('admin.template.layouts.app')
 
+@section('title', 'Home')
+
 @section('js')
     <script src="{{ asset('admin/competencia/crear.js') }}"></script>
     <script src="{{ asset('admin/competencia/lista.js') }}"></script>
