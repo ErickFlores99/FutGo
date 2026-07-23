@@ -68,14 +68,6 @@
                         </h5>
                     </div>
 
-                    <!-- Fechas -->
-                    <div class="small text-muted mb-3">
-                        <i class="ti ti-calendar me-1"></i>
-                        {{ $competencia->fecha_inicio?->format('d/m/Y') }}
-                        -
-                        {{ $competencia->fecha_fin?->format('d/m/Y') }}
-                    </div>
-
                     <!-- Grupos -->
                     <div class="mb-3">
                         <h6 class="fw-semibold">
@@ -83,17 +75,23 @@
                         </h6>
 
                         @foreach($competencia->grupos->take(3) as $grupo)
-                            <div class="bg-light rounded-3 p-2 mb-2">
-                                <div class="fw-semibold small">
-                                    {{ $grupo->genero->nombre }}
-                                    -
-                                    {{ $grupo->categoria->nombre }}
+                            <a href="{{ route('grupos.detalle', [
+                                    'competencia' => $competencia->id,
+                                    'grupo' => $grupo->id
+                                ]) }}"
+                                class="text-decoration-none text-reset">
+                                <div class="bg-light rounded-3 p-2 mb-2">
+                                    <div class="fw-semibold small">
+                                        {{ $grupo->genero->nombre }}
+                                        -
+                                        {{ $grupo->categoria->nombre }}
+                                    </div>
+                                    <div class="text-muted small">
+                                        División:
+                                        {{ $grupo->division->nombre }}
+                                    </div>
                                 </div>
-                                <div class="text-muted small">
-                                    División:
-                                    {{ $grupo->division->nombre }}
-                                </div>
-                            </div>
+                            </a>
                         @endforeach
 
                         @if($competencia->grupos->count() > 3)
