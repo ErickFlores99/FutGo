@@ -3,7 +3,7 @@
 namespace App\Services\Admin\Competencia;
 
 use App\Models\Competencia\Competencia;
-use App\Models\Competencia\CompetenciaDia;
+use App\Models\Competencia\CompetenciaGrupoDia;
 use App\Models\Competencia\CompetenciaGrupo;
 use App\Models\Competencia\CompetenciaTipo;
 use App\Models\Competencia\CompetenciaCategoria;
@@ -58,8 +58,8 @@ class CompetenciaService
             */
 
             foreach ($data['dias'] as $dia) {
-                CompetenciaDia::create([
-                    'competencia_id' => $competencia->id,
+                CompetenciaGrupoDia::create([
+                    'competencia_grupo_id' => $competencia->id,
                     'dia'            => $dia,
                 ]);
             }

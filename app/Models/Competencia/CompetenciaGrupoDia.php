@@ -5,14 +5,14 @@ namespace App\Models\Competencia;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class CompetenciaDia extends Model
+class CompetenciaGrupoDia extends Model
 {
     /**
      * Tabla asociada al modelo.
      *
      * @var string
      */
-    protected $table = 'competencia_dias';
+    protected $table = 'competencia_grupo_dias';
 
     /**
      * Atributos asignables masivamente.
@@ -20,7 +20,7 @@ class CompetenciaDia extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'competencia_id',
+        'competencia_grupo_id',
         'dia',
     ];
 
@@ -40,7 +40,7 @@ class CompetenciaDia extends Model
     {
         return $this->belongsTo(
             Competencia::class,
-            'competencia_id'
+            'competencia_grupo_id'
         );
     }
 }

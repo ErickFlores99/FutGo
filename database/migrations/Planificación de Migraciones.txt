@@ -1,213 +1,249 @@
 Planificación de Migraciones
 
-
 Migración: Usuarios
+    Tabla: users
+        id
+        name -> string
+        email -> string (unique)
+        email_verified_at -> timestamp (nullable)
+        password -> string
+        estatus -> tinyInteger()->default(4)
+        0 Inactivo
+        1 Activo
+        2 Bloqueado
+        3 Eliminado
+        4 Pendiente
+        5 Deshabilitado
+        6 Desactivado
+        rememberToken()
+        timestamps()
 
-Tabla: users
-- id
-- name -> string
-- email -> string (unique)
-- email_verified_at -> timestamp (nullable)
-- password -> string
-- estatus -> tinyInteger()->default(4)
-    0 Inactivo,1 Activo,2 Bloqueado,3 Eliminado,4 Pendiente,5 Deshabilitado,6 Desactivado
-- rememberToken()
-- timestamps()
+    Tabla: roles
+        id
+        nombre -> string (unique)
+        timestamps()
 
-Tabla: roles
-- id
-- nombre -> string (unique)
-- timestamps()
+        Ejemplos: Super Administrador, Administrador, Capturista, Árbitro, Delegado
 
-Tabla: rol_user
-- rol_id -> foreignId()->constrained('roles')
-- user_id -> foreignId()->constrained('users')
-- timestamps()
+    Tabla: rol_user
+    Tabla pivote para la relación muchos a muchos entre usuarios y roles.
+        rol_id -> foreignId()->constrained('roles')
+        user_id -> foreignId()->constrained('users')
+        timestamps()
 
 
-Migración: Competencia_Catálogos
+Migración: Competencia - Catálogos
+    Tabla: competencia_tipos
+        id
+        nombre -> string (unique)
+        descripcion -> string (nullable)
+        timestamps()
+        Ejemplos: Liga,Torneo,Copa
 
-Tabla: competencia_tipos
-- id
-- nombre -> string (unique)
-- descripcion -> string (nullable)
-- timestamps()
+    Tabla: competencia_generos
+        id
+        nombre -> string (unique)
+        descripcion -> string (nullable)
+        estatus -> tinyInteger()->default(1)
+        0 Inactivo
+        1 Activo
+        timestamps()
+        Ejemplos: Varonil, Femenil, Mixto
 
-Ejemplos: Liga,Torneo,Copa
+    Tabla: competencia_categorias
+        id
+        nombre -> string (unique)
+        descripcion -> string (nullable)
+        edad_minima -> integer (nullable)
+        edad_maxima -> integer (nullable)
+        estatus -> tinyInteger()->default(1)
+        0 Inactivo
+        1 Activo
+        timestamps()
+        Ejemplos: Infantil, Juvenil, Libre, Veteranos
 
-Tabla: generos
-- id
-- nombre -> string (unique)
-- descripcion -> string (nullable)
-- estatus -> tinyInteger()->default(1)
-    0 Inactivo,1 Activo
-- timestamps()
+    Tabla: competencia_divisiones
+        id
+        nombre -> string (unique)
+        descripcion -> string (nullable)
+        estatus -> tinyInteger()->default(1)
+        0 Inactivo
+        1 Activo
+        timestamps()
 
-Ejemplos: Varonil,Femenil,Mixto
-
-Tabla: categorias
-- id
-- nombre -> string (unique)
-- descripcion -> string (nullable)
-- edad_minima -> integer (nullable)
-- edad_maxima -> integer (nullable)
-- estatus -> tinyInteger()->default(1)
-    0 Inactivo,1 Activo
-- timestamps()
-
-Ejemplos: Infantil,Juvenil,Libre, Veteranos
-
-Tabla: divisiones
-- id
-- nombre -> string (unique)
-- descripcion -> string (nullable)
-- estatus -> tinyInteger()->default(1)
-    0 Inactivo,1 Activo
-- timestamps()
-
-Ejemplos: Primera, Segunda, Tercera, Premier
+        Ejemplos: Primera, Segunda, Tercera, Premier
 
 
 Migración: Competencias
 
 Tabla: competencias
+Representa el evento principal que agrupa uno o varios torneos independientes. Contiene únicamente la información general de la competencia.
+    id
+    tipo_competencia_id -> foreignId()->constrained('competencia_tipos')
+    creador_id -> foreignId()->constrained('users')
+    nombre -> string
+    descripcion -> text()->nullable()
+    es_nocturna -> boolean()->default(false)
+    estatus -> tinyInteger()->default(0)
+        0 Configuración
+        1 Activa
+        2 Suspendida
+        3 Finalizada
+        4 Cancelada
+    timestamps()
+Nota: El estatus representa el estado general de la competencia como evento. Puede calcularse automáticamente con base en el estado de sus grupos o administrarse manualmente por el organizador.
 
-Representa el torneo principal.
-- id
-- tipo_competencia_id -> foreignId()->constrained('tipos_competencia')
-- administrador_id -> foreignId()->constrained('users')
-- nombre -> string
-- descripcion -> text (nullable)
-- fecha_inicio -> date
-- fecha_fin -> date
-- es_nocturna -> boolean()->default(false)
-- estatus -> tinyInteger()->default(0)
-    0 Pendiente,1 Activa,2 Suspendida,3 Finalizada,4 Cancelada
-- timestamps()
 
-Tabla: competencia_dias
-
-Días en que se jugará la competencia.
-- id
-- competencia_id
-    -> foreignId()->constrained('competencias')
-- dia -> tinyInteger
-    1 Lunes,2 Martes,3 Miércoles,4 Jueves,5 Viernes,6 Sábado,7 Domingo
-- timestamps()
+Tabla: competencia_grupo_dias
+    id
+    competencia_grupo_id
+        -> foreignId()->constrained('competencia_grupos')
+    dia
+        1 Lunes
+        2 Martes
+        ...
+        7 Domingo
+    timestamps()
 
 Tabla: competencia_grupos
+Representa cada torneo independiente generado dentro de una competencia a partir de la combinación de Género + Categoría + División.
+Cada registro posee su propia configuración y puede desarrollarse de forma independiente del resto de los grupos pertenecientes a la misma competencia.
+    id
+    competencia_id -> foreignId()->constrained('competencias')
+    genero_id -> foreignId()->constrained('competencia_generos')
+    categoria_id -> foreignId()->constrained('competencia_categorias')
+    division_id -> foreignId()->constrained('competencia_divisiones')
+    fecha_inicio -> date
+    fecha_fin -> date
+    estatus -> tinyInteger()->default(0)
+        0 Configuración
+        1 Activa
+        2 Suspendida
+        3 Finalizada
+        4 Cancelada
+        timestamps()
 
-Representa cada combinación de Género + Categoría + División.
-- id
-- competencia_id
-    -> foreignId()->constrained('competencias')
-- genero_id
-    -> foreignId()->constrained('generos')
-- categoria_id
-    -> foreignId()->constrained('categorias')
-- division_id
-    -> foreignId()->constrained('divisiones')
-- estatus -> tinyInteger()->default(1)
-    0 Inactivo,1 Activo,2 Finalizado
-- timestamps()
+Configuraciones futuras (opcionales)
+    Cada CompetenciaGrupo podrá contar con parámetros propios como:
+        - cantidad_vueltas
+        - sistema_competencia
+        - clasificados
+        - puntos_por_victoria
+        - puntos_por_empate
+        - puntos_por_derrota
+        - permite_empates
+        - tiempo_reglamentario
+        - tiempo_descanso
+        - reglas_especiales
 
-Ejemplo de generación automática
+Generación automática de grupos
+Supongamos que el administrador registra la siguiente competencia:
 
-Competencia creada
-    Liga Municipal 2027
-        Selección
-            Géneros
-                ✓ Varonil
-                ✓ Femenil
+Liga Municipal 2027
 
-            Categorías
-                ✓ Libre
-                ✓ Juvenil
+Géneros
+✓ Varonil
+✓ Femenil
 
-            Divisiones
-                ✓ Primera
-                ✓ Segunda
+Categorías
+✓ Libre
+✓ Juvenil
 
-Laravel generará automáticamente
+Divisiones
+✓ Primera
+✓ Segunda
 
-    CompetenciaGrupo
+El sistema generará automáticamente ocho registros en competencia_grupos.
 
-        Liga Municipal
-            Varonil
-            Libre
-            Primera
+Liga Municipal
+└── Varonil
+    ├── Libre
+    │   ├── Primera
+    │   └── Segunda
+    │
+    └── Juvenil
+        ├── Primera
+        └── Segunda
 
-        Liga Municipal
-            Varonil
-            Libre
-            Segunda
+Liga Municipal
+└── Femenil
+    ├── Libre
+    │   ├── Primera
+    │   └── Segunda
+    │
+    └── Juvenil
+        ├── Primera
+        └── Segunda
 
-        Liga Municipal
-            Varonil
-            Juvenil
-            Primera
+Cada registro funcionará como un torneo completamente independiente, compartiendo únicamente la información general de la competencia.
 
-        Liga Municipal
-            Varonil
-            Juvenil
-            Segunda
+Arquitectura funcional
 
-        Liga Municipal
-            Femenil
-            Libre
-            Primera
-
-        Liga Municipal
-            Femenil
-            Libre
-            Segunda
-
-        Liga Municipal    
-            Femenil
-            Juvenil
-            Primera
-
-        Liga Municipal    
-            Femenil
-            Juvenil
-            Segunda
-
-Cada uno de estos registros funcionará como un torneo independiente dentro de la misma competencia.
-
-Estructura futura del sistema
-
-Toda la operación del sistema dependerá de competencia_grupos.
+Toda la operación del sistema dependerá de CompetenciaGrupo.
 
 Competencias
-        │
-        │
-        ▼
+      │
+      ▼
 CompetenciaGrupos
-        │
-        ├── Equipos
-        ├── Jugadores
-        ├── Cuerpos Técnicos
-        ├── Jornadas
-        ├── Partidos
-        ├── Tabla de Posiciones
-        ├── Goleadores
-        ├── Estadísticas
-        ├── Sanciones
-        ├── Inscripciones
-        └── Roles de Competencia
+      │
+      ├── Equipos
+      ├── Jugadores
+      ├── Cuerpos Técnicos
+      ├── Jornadas
+      ├── Partidos
+      ├── Tabla de Posiciones
+      ├── Goleadores
+      ├── Estadísticas
+      ├── Sanciones
+      ├── Inscripciones
+      ├── Roles de Competencia
+      └── Configuración específica
 
-Migraciones recomendadas (orden de creación)
-01_users
-02_roles
-03_rol_user
-04_competencia_tipos
-05_generos
-06_categorias
-07_divisiones
-08_competencias
-09_competencia_dias
-10_competencia_grupos
+Esto permite que una misma competencia pueda administrar múltiples torneos simultáneamente sin duplicar información.
 
+Flujo del sistema
+Administrador
+      │
+      ▼
+Crear Competencia
+      │
+      ▼
+Seleccionar
+      ├── Géneros
+      ├── Categorías
+      └── Divisiones
+      │
+      ▼
+Generar CompetenciaGrupos automáticamente
+      │
+      ▼
+Administrar cada grupo como torneo independiente
+      │
+      ├── Equipos
+      ├── Calendario
+      ├── Partidos
+      ├── Estadísticas
+      ├── Tabla General
+      └── Campeón
+
+Orden recomendado de migraciones
+    Users:
+        01_users
+        02_roles
+        03_rol_user
+
+    Competencias Catalogos
+        04_competencia_tipos
+        05_competencia_generos
+        06_competencia_categorias
+        07_competencia_divisiones
+
+    Competencias
+        08_competencias
+        09_ccompetencia_grupo_dias
+        10_competencia_grupos
+
+Módulos deportivos
 11_equipos
 12_jugadores
 13_cuerpos_tecnicos
@@ -223,3 +259,29 @@ Migraciones recomendadas (orden de creación)
 23_sanciones
 24_inscripciones_equipos
 25_documentos_equipos
+
+Módulos administrativos futuros
+26_pagos
+27_patrocinadores
+28_notificaciones
+29_archivos
+30_bitacora
+31_configuraciones
+32_roles_competencia
+33_permisos_competencia
+Filosofía del proyecto
+
+La entidad Competencia representa únicamente el contenedor principal del torneo.
+
+La entidad CompetenciaGrupo representa la unidad de negocio real sobre la que operan todos los módulos del sistema.
+
+Esta arquitectura permite:
+
+Escalar una competencia a múltiples categorías sin duplicar información.
+Asumir configuraciones unicas entre los grupos.
+Administrar cada grupo como un torneo independiente.
+Mantener una estructura modular, limpia y preparada para futuras funcionalidades como estadísticas, inscripciones, pagos, arbitraje y reportes.
+
+
+
+

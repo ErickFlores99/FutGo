@@ -71,8 +71,8 @@ class Competencia extends Model
     public function dias(): HasMany
     {
         return $this->hasMany(
-            CompetenciaDia::class,
-            'competencia_id'
+            CompetenciaGrupoDia::class,
+            'competencia_grupo_id'
         );
     }
 
