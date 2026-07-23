@@ -71,19 +71,6 @@ class CrearCompetenciaRequest extends FormRequest
                 'string',
                 'max:1000',
             ],
-
-            /*
-            'fecha_inicio' => [
-                'required',
-                'date',
-            ],
-
-            'fecha_fin' => [
-                'required',
-                'date',
-                'after_or_equal:fecha_inicio',
-            ],
-            */
             
             'es_nocturna' => [
                 'boolean',

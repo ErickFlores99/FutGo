@@ -22,7 +22,7 @@ class Competencia extends Model
      */
     protected $fillable = [
         'tipo_competencia_id',
-        'administrador_id',
+        'creador_id',
         'nombre',
         'descripcion',
         'fecha_inicio',
@@ -55,13 +55,13 @@ class Competencia extends Model
     }
 
     /**
-     * Administrador de la competencia.
+     * Creador de la competencia.
      */
-    public function administrador(): BelongsTo
+    public function creador(): BelongsTo
     {
         return $this->belongsTo(
             User::class,
-            'administrador_id'
+            'creador_id'
         );
     }
 

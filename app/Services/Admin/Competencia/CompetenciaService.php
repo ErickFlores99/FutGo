@@ -43,26 +43,11 @@ class CompetenciaService
 
             $competencia = Competencia::create([
                 'tipo_competencia_id' => $data['tipo_competencia'],
-                'administrador_id'    => auth()->id(),
+                'creador_id'          => auth()->id(),
                 'nombre'              => $data['nombre'],
                 'descripcion'         => $data['descripcion'] ?? null,
-                //'fecha_inicio'        => $data['fecha_inicio'],
-                //'fecha_fin'           => $data['fecha_fin'],
                 'es_nocturna'         => $data['es_nocturna'],
             ]);
-
-            /*
-            |--------------------------------------------------------------------------
-            | Días de juego
-            |--------------------------------------------------------------------------
-            */
-
-            foreach ($data['dias'] as $dia) {
-                CompetenciaGrupoDia::create([
-                    'competencia_grupo_id' => $competencia->id,
-                    'dia'            => $dia,
-                ]);
-            }
 
             /*
             |--------------------------------------------------------------------------
@@ -70,17 +55,16 @@ class CompetenciaService
             |--------------------------------------------------------------------------
             |
             | Se generan todas las combinaciones posibles:
-            | Género + Categoría + División
+            | Género + Categoría + División.
+            | A cada grupo se le asignan sus días de juego.
             |
             */
 
             foreach ($data['generos'] as $generoId) {
-
                 foreach ($data['categorias'] as $categoriaId) {
-
                     foreach ($data['divisiones'] as $divisionId) {
 
-                        CompetenciaGrupo::create([
+                        $grupo = CompetenciaGrupo::create([
                             'competencia_id' => $competencia->id,
                             'genero_id'      => $generoId,
                             'categoria_id'   => $categoriaId,
@@ -88,10 +72,14 @@ class CompetenciaService
                             'estatus'        => 0,
                         ]);
 
+                        foreach ($data['dias'] as $dia) {
+                            CompetenciaGrupoDia::create([
+                                'competencia_grupo_id' => $grupo->id,
+                                'dia' => $dia,
+                            ]);
+                        }
                     }
-
                 }
-
             }
 
             return $competencia;
