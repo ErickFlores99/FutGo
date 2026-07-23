@@ -4,6 +4,7 @@ namespace App\Models\Competencia;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class CompetenciaGrupoDia extends Model
 {
@@ -40,6 +41,17 @@ class CompetenciaGrupoDia extends Model
     {
         return $this->belongsTo(
             Competencia::class,
+            'competencia_grupo_id'
+        );
+    }
+
+    /**
+     * Grupo al que pertenece el día.
+     */
+    public function grupo(): BelongsTo
+    {
+        return $this->belongsTo(
+            CompetenciaGrupo::class,
             'competencia_grupo_id'
         );
     }

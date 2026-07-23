@@ -4,6 +4,7 @@ namespace App\Models\Competencia;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class CompetenciaGrupo extends Model
 {
@@ -77,6 +78,17 @@ class CompetenciaGrupo extends Model
         return $this->belongsTo(
             CompetenciaDivision::class,
             'division_id'
+        );
+    }
+
+    /**
+     * Días de competencia del grupo.
+     */
+    public function dias(): HasMany
+    {
+        return $this->hasMany(
+            CompetenciaGrupoDia::class,
+            'competencia_grupo_id'
         );
     }
 }
