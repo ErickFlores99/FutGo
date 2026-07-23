@@ -39,7 +39,7 @@
                 <!-- Dashboard -->
                 <li class="nav-item mb-2">
                     <a href="{{ route('appIndex') }}"
-                        class="nav-link @active('appIndex')">
+                    class="nav-link @active('appIndex')">
                         <i class="ri-dashboard-line me-2"></i>
                         Dashboard
                     </a>
@@ -81,10 +81,10 @@
                     </button>
                     <div class="collapse" id="menuGestion">
                         <ul class="nav flex-column ms-3 mt-2">
-                            <li><a href="#" class="nav-link">Equipos</a></li>
-                            <li><a href="#" class="nav-link">Jugadores</a></li>
-                            <li><a href="#" class="nav-link">Árbitros</a></li>
-                            <li><a href="#" class="nav-link">Canchas</a></li>
+                            <li><a href="#" class="nav-link text-dark">Equipos</a></li>
+                            <li><a href="#" class="nav-link text-dark">Jugadores</a></li>
+                            <li><a href="#" class="nav-link text-dark">Árbitros</a></li>
+                            <li><a href="#" class="nav-link text-dark">Canchas</a></li>
                         </ul>
                     </div>
                 </li>
@@ -103,17 +103,17 @@
 
                     <div class="collapse" id="menuCatalogos">
                         <ul class="nav flex-column ms-3 mt-2">
-                            <li><a href="#" class="nav-link">Categorías</a></li>
-                            <li><a href="#" class="nav-link">Divisiones</a></li>
-                            <li><a href="#" class="nav-link">Tipos</a></li>
-                            <li><a href="#" class="nav-link">Días</a></li>
+                            <li><a href="#" class="nav-link text-dark">Categorías</a></li>
+                            <li><a href="#" class="nav-link text-dark">Divisiones</a></li>
+                            <li><a href="#" class="nav-link text-dark">Tipos</a></li>
+                            <li><a href="#" class="nav-link text-dark">Días</a></li>
                         </ul>
                     </div>
                 </li>
 
                 <!-- Reportes -->
                 <li class="mt-3">
-                    <a href="#" class="nav-link">
+                    <a href="#" class="nav-link text-dark color-dark">
                         <i class="ri-bar-chart-box-line me-2"></i>
                         Reportes
                     </a>
@@ -121,7 +121,7 @@
 
                 <!-- Sistema -->
                 <li class="mt-3">
-                    <a href="#" class="nav-link">
+                    <a href="#" class="nav-link text-dark">
                         <i class="ri-settings-3-line me-2"></i>
                         Configuración
                     </a>
@@ -131,5 +131,8 @@
 
         </div>
 
+    </div>
+    <div class="mt-auto p-3 border-top text-center text-muted small">
+        FutGo v{{ config('app.version') }} · Laravel {{ app()->version() }}
     </div>
 </div>

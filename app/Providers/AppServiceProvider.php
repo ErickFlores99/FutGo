@@ -22,8 +22,8 @@ class AppServiceProvider extends ServiceProvider
     {
         Blade::directive('active', function ($expression) {
             return "<?php echo request()->routeIs($expression)
-                ? 'active bg-success rounded-3 text-white'
-                : ''; ?>";
+                ? 'active bg-success rounded-3 text-white text-decoration-none'
+                : 'text-dark text-decoration-none'; ?>";
         });
     }
 }
